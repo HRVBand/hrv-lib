@@ -6,13 +6,14 @@
  * user guide available at https://docs.gradle.org/3.3/userguide/tutorial_java_projects.html
  */
 
-// Apply the java plugin to add support for Java
-apply plugin: 'java'
-apply plugin: 'jacoco'
-
-plugins {
+ plugins {
     id "org.sonarqube" version "2.2.1"
 }
+ 
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'org.sonarqube'
+
 
 // In this section you declare where to find the dependencies of your project
 repositories {
