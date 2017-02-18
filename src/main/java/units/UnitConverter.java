@@ -1,6 +1,6 @@
 package units;
 
-public interface UnitConverter {
+public interface UnitConverter<T extends Enum<T>> {
 
 	/**
 	 * Converts the given {@code value} from the given unit {@code from} to the other give unit {@code to}
@@ -9,7 +9,7 @@ public interface UnitConverter {
 	 * @param to Unit to convert to
 	 * @return Converted value
 	 */
-	public double convert(double value, String from, String to);
+	public double convert(double value, T from, T to);
 	
 
 	/**
@@ -18,5 +18,5 @@ public interface UnitConverter {
 	 * @param from Unit to convert from
 	 * @param to Unit to convert to
 	 */
-	public void convert(double[] values, String from, String to);
+	public void convert(double[] values, T from, T to);
 }
