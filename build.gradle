@@ -30,3 +30,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
+task debug << {
+    println "java.home is " + System.properties['java.home']
+}
+
