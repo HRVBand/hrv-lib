@@ -8,7 +8,7 @@ public class FindIndexOfClosestValueSortedTest {
 	@Test
 	public void testFindIndexOfClosestValueSorted() {
 		
-		double[] array = new double[] {2,3,4,5,6,7,8,9,100, 101};
+		double[] array = new double[] {2,3,4,5,6,7,8,9,100,101};
 		
 		FindIndexOfClosestValueSorted indexFinder = new FindIndexOfClosestValueSorted();
 		
@@ -27,8 +27,6 @@ public class FindIndexOfClosestValueSortedTest {
 		int index50 = indexFinder.findClosestIndexInSortedArray(array, 50.0);
 		assertEquals(7, index50);
 		int index90 = indexFinder.findClosestIndexInSortedArray(array, 90.0);
-		assertEquals(8, index90);
-		
-				
+		assertEquals(8, index90);		
 	}
 }
