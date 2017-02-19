@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="common.MathUtilsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-02-19T11:04:16" hostname="WIN-8UJOACIV1C0" time="0.004">
-  <properties/>
-  <testcase name="testRound" classname="common.MathUtilsTest" time="0.004"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
