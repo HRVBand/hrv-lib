@@ -1,6 +1,7 @@
 /.gradle/
 /bin/
 /build/reports/
+/build/test-results/
 
 # Eclipse .gitignore
 .metadata

@@ -4,5 +4,5 @@ import hrv.RRData;
 
 @FunctionalInterface
 public interface HRVDataProcessor {
-	Double process(RRData data);
+	double process(RRData data);
 }
