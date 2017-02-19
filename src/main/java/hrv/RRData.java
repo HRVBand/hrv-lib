@@ -46,11 +46,19 @@ public class RRData {
 	public double[] getValueAxis() {
 		return rrValuesAxis;
 	}
+	
+	public void setValueAxis(double[] values) {
+		this.rrValuesAxis = values;
+	}
 
 	public double[] getTimeAxis() {
 		return rrTimeAxis;
 	}
 
+	public void setTimeAxis(double[] values) {
+		this.rrTimeAxis = values;
+	}
+	
 	public TimeUnit getValueAxisUnit() {
 		return rrValueAxisUnit;
 	}
