@@ -28,4 +28,20 @@ public class ArrayUtils {
 		
 		return array;
 	}
+	
+	public static double min(double[] array) {
+		double min = array[0];
+		for (int i = 1; i < array.length; i++) {
+			min = Math.min(min, array[i]);
+		}
+		return min;
+	}
+
+	public static double max(double[] array) {
+		double max = array[0];
+		for (int i = 1; i < array.length; i++) {
+			max = Math.max(max, array[i]);
+		}
+		return max;
+	}
 }

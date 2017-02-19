@@ -20,4 +20,16 @@ public class ArrayUtilsTest {
 		 assertEquals(array.length, list.size());
 		 assertEquals(array[0], list.get(0), 0.001);
 	 }
+	 
+	 @Test
+	 public void testMin() {
+		 double[] arr = new double[] {1.0, 2.0, 0.0, 100.0, 99.9999, 0.000001};
+		 assertEquals(0.0, ArrayUtils.min(arr), 0.0000000001);
+	 }
+	 
+	 @Test
+	 public void testMax() {
+		 double[] arr = new double[] {1.0, 2.0, 0.0, 100.0, 99.9999, 0.000001};
+		 assertEquals(100.0, ArrayUtils.max(arr), 0.0000000001);
+	 }
 }
