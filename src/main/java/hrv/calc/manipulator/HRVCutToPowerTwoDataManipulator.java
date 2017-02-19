@@ -1,4 +1,4 @@
-package hrv.calc;
+package hrv.calc.manipulator;
 
 import common.MathUtils;
 import hrv.RRData;

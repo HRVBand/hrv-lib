@@ -1,10 +1,11 @@
-package hrv.calc;
+package hrv.calc.manipulator;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import hrv.RRData;
+import hrv.calc.manipulator.HRVSubstractMeanManipulator;
 import units.TimeUnitConverter.TimeUnit;
 
 public class HRVSubstractMeanManipulatorTest {

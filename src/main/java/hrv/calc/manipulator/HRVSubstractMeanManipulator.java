@@ -1,7 +1,8 @@
-package hrv.calc;
+package hrv.calc.manipulator;
+
+import org.apache.commons.math3.stat.descriptive.moment.Mean;
 
 import hrv.RRData;
-import org.apache.commons.math3.stat.descriptive.moment.Mean;
 
 public class HRVSubstractMeanManipulator implements HRVDataManipulator {
 

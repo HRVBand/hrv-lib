@@ -2,8 +2,9 @@ package hrv.calc.frequency.psd;
 
 import common.MathUtils;
 import hrv.RRData;
-import hrv.calc.HRVCutToPowerTwoDataManipulator;
-import hrv.calc.HRVZeroPadToPowerOfTwoManipulator;
+import hrv.calc.manipulator.HRVCutToPowerTwoDataManipulator;
+import hrv.calc.manipulator.HRVSubstractMeanManipulator;
+import hrv.calc.manipulator.HRVZeroPadToPowerOfTwoManipulator;
 
 /**
  * Uses FFT to estimate the power spectra density of RR-Data-Intervals
@@ -73,18 +74,15 @@ public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensi
 			mani.manipulate(rr);
 		}
 		
-		double[] rrX = rr.getTimeAxis();
-		double[] rrY = rr.getValueAxis();
+		//double[] rrX = rr.getTimeAxis();
+		//double[] rrY = rr.getValueAxis();
 		//double sampleFrequency = rr.getAvgSampleFrequency();
 		
 
-		/*Mean m = new Mean();
-		double mean = m.evaluate(rrY);
-
-		for (int i = 0; i < rrY.length; i++) {
-			rrY[i] -= mean;
-		}
-
+		HRVSubstractMeanManipulator meanMani = new HRVSubstractMeanManipulator();
+		meanMani.manipulate(rr);
+		
+		/*
 		// Apply window
 		windowFunction.applyWindow(rr);
 
