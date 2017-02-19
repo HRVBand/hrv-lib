@@ -36,7 +36,7 @@ public class ArrayUtilsTest {
 	@Test
 	public void testPadZeros() {
 		double[] arr = new double[] { 1.0, 2.0, 0.0, 100.0, 99.9999, 0.000001 };
-		double[] paddedArr = ArrayUtils.padZeros(arr, 5);
+		double[] paddedArr = ArrayUtils.padZeros(arr, 4);
 		assertEquals(100.0, paddedArr[3], 0.0000000001);
 		assertEquals(0.000001, paddedArr[5], 0.0000000001);
 		assertEquals(0.0, paddedArr[6], 0.0000000001);
@@ -88,10 +88,10 @@ public class ArrayUtilsTest {
 	public void testContinouWithZeroLengthArray() {
 		double[] arr = new double[0];
 		double[] newArr = ArrayUtils.continueWith(arr, 2.0, 2);
-		
-		assertEquals(0.0, newArr[0], 0.00001);
-		assertEquals(2.0, newArr[1], 0.00001);
+
 		assertEquals(2, newArr.length);		
+		assertEquals(2.0, newArr[0], 0.00001);
+		assertEquals(4.0, newArr[1], 0.00001);
 	}
 	
 	@Test

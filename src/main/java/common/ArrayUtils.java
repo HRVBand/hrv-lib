@@ -52,12 +52,12 @@ public class ArrayUtils {
 	}
 
 	/**
-	 * Adds Zeros to the array until the index {@code untilIndex}.
+	 * Adds a number of Zeros to the array as specifies with {@code newZeroes}.
 	 * 
 	 * @param data
 	 *            Data to be add zeroes to
 	 * @param untilIndex
-	 *            Number of zeroes to add. Must be positive
+	 *            Number of zeroes to add (has to be positive).
 	 * @return new array with trailing zeroes
 	 */
 	public static double[] padZeros(double[] data, int newZeroes) {
@@ -93,7 +93,7 @@ public class ArrayUtils {
 		// Fill remaining values with zero and make x-Axis continuous
 		double firstOldElement = data.length == 0 ? 0 : data[data.length - 1];
 		for (int i = data.length; i < data.length + numOfNewIncrements; i++) {
-			newData[i] = firstOldElement + increment * i;
+			newData[i] = firstOldElement + increment * (i - data.length + 1);
 		}
 
 		return newData;
