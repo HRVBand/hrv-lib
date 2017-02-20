@@ -35,8 +35,8 @@ public class WindowTests {
 		wnd.manipulate(data);
 		
 		assertEquals(0.08, data.getValueAxis()[0], 0.00001);
-		assertEquals(0.31, data.getValueAxis()[1], 0.00001);
+		assertEquals(0.77, data.getValueAxis()[1], 0.00001);
 		assertEquals(0.77, data.getValueAxis()[2], 0.00001);
-		assertEquals(1.0, data.getValueAxis()[3], 0.00001);
+		assertEquals(0.08, data.getValueAxis()[3], 0.00001);
 	}
 }
