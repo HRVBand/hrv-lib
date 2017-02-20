@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import hrv.calc.frequency.psd.PowerSpectrum;
 
-public class LFCalculatorTest {
+public class PowerSpectrumIntegralCalculatorTest {
 
 	@Test
 	public void testOneFunction() {
@@ -20,10 +20,10 @@ public class LFCalculatorTest {
 		
 		PowerSpectrum ps = new PowerSpectrum(ones, onesX);
 		
-		LFCalculator calc = new LFCalculator(0, 5);
+		PowerSpectrumIntegralCalculator calc = new PowerSpectrumIntegralCalculator(0, 5);
 		assertEquals(5, calc.process(ps), 0.01);
 
-		LFCalculator calc2 = new LFCalculator(0.04, 0.15);
+		PowerSpectrumIntegralCalculator calc2 = new PowerSpectrumIntegralCalculator(0.04, 0.15);
 		assertEquals(0.11, calc2.process(ps), 0.0001);
 	}
 }

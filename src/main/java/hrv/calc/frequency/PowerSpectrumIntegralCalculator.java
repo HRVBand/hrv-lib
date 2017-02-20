@@ -5,12 +5,12 @@ import org.apache.commons.math3.analysis.integration.TrapezoidIntegrator;
 import hrv.calc.frequency.psd.PowerSpectrum;
 import hrv.calc.frequency.psd.PowerSpectrumUnivariateFunctionAdapter;
 
-public class LFCalculator implements HRVPowerSpectrumProcessor {
+public class PowerSpectrumIntegralCalculator implements HRVPowerSpectrumProcessor {
 
 	private double lowerIntegrationLimit;
 	private double upperIntegrationLimit;
 
-	public LFCalculator(double lowerIntegrationLimit, double upperIntegrationLimit) {
+	public PowerSpectrumIntegralCalculator(double lowerIntegrationLimit, double upperIntegrationLimit) {
 		this.lowerIntegrationLimit = lowerIntegrationLimit;
 		this.upperIntegrationLimit = upperIntegrationLimit;
 	}
