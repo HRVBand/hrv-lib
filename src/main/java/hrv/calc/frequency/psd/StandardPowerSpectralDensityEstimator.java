@@ -5,14 +5,8 @@ import org.apache.commons.math3.transform.DftNormalization;
 import org.apache.commons.math3.transform.FastFourierTransformer;
 import org.apache.commons.math3.transform.TransformType;
 
-import common.MathUtils;
 import hrv.RRData;
 import hrv.calc.frequency.AvgSampleSizeCalculator;
-import hrv.calc.manipulator.HRVCutToPowerTwoDataManipulator;
-import hrv.calc.manipulator.HRVDataManipulator;
-import hrv.calc.manipulator.HRVSubstractMeanManipulator;
-import hrv.calc.manipulator.HRVZeroPadToPowerOfTwoManipulator;
-import hrv.calc.manipulator.window.NoWindow;
 
 /**
  * Uses FFT to estimate the power spectra density of RR-Data-Intervals
@@ -21,46 +15,6 @@ import hrv.calc.manipulator.window.NoWindow;
  *
  */
 public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensityEstimator {
-
-	/**
-	 * Specifies whether the data is padded with zeros or if it is cut.
-	 */
-	private boolean doZeroPadding = false;
-
-	/**
-	 * Specifies the window function to apply before the FFT.
-	 */
-	private HRVDataManipulator windowFunction = new NoWindow();
-
-	/**
-	 * Creates a New PSD-Calculator Object to calculate the PSD of a sequence.
-	 * 
-	 * @param samplingRate
-	 *            Sampling rate for the sampling of the interpolated data.
-	 */
-	public StandardPowerSpectralDensityEstimator() {
-	}
-
-	/**
-	 * If enabled = true, zero padding is used before FFT otherwise the given
-	 * data is cut to a number that is a power of two.
-	 * 
-	 * @param enabled
-	 *            Enables zero padding.
-	 */
-	public void setZeroPadding(boolean enabled) {
-		doZeroPadding = enabled;
-	}
-
-	/**
-	 * Sets the window function that is applied to the given data before the
-	 * calculation.
-	 * 
-	 * @param windowFunction
-	 */
-	public void setWindowFunction(HRVDataManipulator windowFunction) {
-		this.windowFunction = windowFunction;
-	}
 
 	/**
 	 * Calculates the power spectrum density (PSD) of the given
@@ -73,23 +27,8 @@ public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensi
 	 */
 	@Override
 	public PowerSpectrum calculateEstimate(RRData rr) {
-			
-/*		if (doZeroPadding) {
-			HRVZeroPadToPowerOfTwoManipulator mani = new HRVZeroPadToPowerOfTwoManipulator();
-			mani.manipulate(rr);
-		} else {
-			HRVCutToPowerTwoDataManipulator mani = new HRVCutToPowerTwoDataManipulator();
-			mani.manipulate(rr);
-		}
-		
-		HRVSubstractMeanManipulator meanMani = new HRVSubstractMeanManipulator();
-		meanMani.manipulate(rr);
-		
-		windowFunction.manipulate(rr);*/
-
 		double[] power = calculatePower(rr);
 		double[] frequencies = calculateFrequencies(rr);
-
 		
 		return new PowerSpectrum(power, frequencies);
 	}

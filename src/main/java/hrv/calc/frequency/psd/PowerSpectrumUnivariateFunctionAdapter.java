@@ -6,11 +6,9 @@ import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
 
 public class PowerSpectrumUnivariateFunctionAdapter implements UnivariateFunction {
 
-	private PowerSpectrum ps;
-	PolynomialSplineFunction interpolFunction;
+	private PolynomialSplineFunction interpolFunction;
 	
 	public PowerSpectrumUnivariateFunctionAdapter(PowerSpectrum ps) {
-		this.ps = ps;
 		
 		SplineInterpolator interpolator = new SplineInterpolator();	
 		interpolFunction = interpolator.interpolate(ps.getFrequency(), ps.getPower());
