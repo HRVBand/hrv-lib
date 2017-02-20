@@ -1,10 +1,18 @@
 package hrv.calc.frequency.psd;
 
+import org.apache.commons.math3.complex.Complex;
+import org.apache.commons.math3.transform.DftNormalization;
+import org.apache.commons.math3.transform.FastFourierTransformer;
+import org.apache.commons.math3.transform.TransformType;
+
 import common.MathUtils;
 import hrv.RRData;
+import hrv.calc.frequency.AvgSampleSizeCalculator;
 import hrv.calc.manipulator.HRVCutToPowerTwoDataManipulator;
+import hrv.calc.manipulator.HRVDataManipulator;
 import hrv.calc.manipulator.HRVSubstractMeanManipulator;
 import hrv.calc.manipulator.HRVZeroPadToPowerOfTwoManipulator;
+import hrv.calc.manipulator.window.NoWindow;
 
 /**
  * Uses FFT to estimate the power spectra density of RR-Data-Intervals
@@ -22,7 +30,7 @@ public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensi
 	/**
 	 * Specifies the window function to apply before the FFT.
 	 */
-	//private Window windowFunction = new NoWindow();
+	private HRVDataManipulator windowFunction = new NoWindow();
 
 	/**
 	 * Creates a New PSD-Calculator Object to calculate the PSD of a sequence.
@@ -50,9 +58,9 @@ public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensi
 	 * 
 	 * @param windowFunction
 	 */
-	//public void setWindowFunction(Window windowFunction) {
-	//	this.windowFunction = windowFunction;
-	//}
+	public void setWindowFunction(HRVDataManipulator windowFunction) {
+		this.windowFunction = windowFunction;
+	}
 
 	/**
 	 * Calculates the power spectrum density (PSD) of the given
@@ -66,7 +74,7 @@ public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensi
 	@Override
 	public PowerSpectrum calculateEstimate(RRData rr) {
 			
-		if (doZeroPadding) {
+/*		if (doZeroPadding) {
 			HRVZeroPadToPowerOfTwoManipulator mani = new HRVZeroPadToPowerOfTwoManipulator();
 			mani.manipulate(rr);
 		} else {
@@ -74,43 +82,52 @@ public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensi
 			mani.manipulate(rr);
 		}
 		
-		//double[] rrX = rr.getTimeAxis();
-		//double[] rrY = rr.getValueAxis();
-		//double sampleFrequency = rr.getAvgSampleFrequency();
-		
-
 		HRVSubstractMeanManipulator meanMani = new HRVSubstractMeanManipulator();
 		meanMani.manipulate(rr);
 		
-		/*
-		// Apply window
-		windowFunction.applyWindow(rr);
+		windowFunction.manipulate(rr);*/
 
-		// FFT of the sampled function
+		double[] power = calculatePower(rr);
+		double[] frequencies = calculateFrequencies(rr);
+
+		
+		return new PowerSpectrum(power, frequencies);
+	}
+	
+	private double[] calculatePower(RRData rr) {
+		double[] rrY = rr.getValueAxis();
+		AvgSampleSizeCalculator calc = new AvgSampleSizeCalculator();
+		double avgSampleSize = calc.process(rr);
+		
 		final FastFourierTransformer fft = new FastFourierTransformer(DftNormalization.STANDARD);
 		final Complex[] fftres = fft.transform(rrY, TransformType.FORWARD);
 
 		// Calculate the power spectral density of the Fourier Transform
-		double[] betrag = new double[rrX.length];
-		for (int i = 0; i < rrX.length; i++) {
+		double[] betrag = new double[rrY.length];
+		for (int i = 0; i < rrY.length; i++) {
 			//Calculate power spectral density
 			//Unit: s*s / Hz = s*s*s
 			double abs = fftres[i].abs(); 
-			betrag[i] =  abs * abs / (rr.getAvgSampleFrequency()); 
+			betrag[i] =  abs * abs / (rrY.length * (1 / avgSampleSize) * 0.5); 
 		}
-
+		
+		return betrag;
+	}
+	
+	private double[] calculateFrequencies(RRData rr) {
+		AvgSampleSizeCalculator calc = new AvgSampleSizeCalculator();
+		double sampleFrequency = 1 / calc.process(rr);
 		double maxAbtastFrequenz = 0.5 * sampleFrequency;
 
 		// Calculate Frequencies to corresponding power values
 		// Frequency Steps in Hz
-		double frequencySteps = (2 * maxAbtastFrequenz) / rrX.length;
-		double[] frequencies = new double[rrX.length];
+		double frequencySteps = (2 * maxAbtastFrequenz) / rr.getTimeAxis().length;
+		double[] frequencies = new double[rr.getTimeAxis().length];
 
 		for (int i = 0; i < frequencies.length; i++) {
 			frequencies[i] = (frequencySteps) * i;
 		}
-
-		return new PowerSpectrum(betrag, frequencies);*/
-		return null;
+		
+		return frequencies;
 	}
 }
