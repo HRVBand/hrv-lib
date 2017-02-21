@@ -1,8 +1,9 @@
 package hrv.calc;
 
+import hrv.HRVParameter;
 import hrv.RRData;
 
 @FunctionalInterface
 public interface HRVDataProcessor {
-	double process(RRData data);
+	HRVParameter process(RRData data);
 }

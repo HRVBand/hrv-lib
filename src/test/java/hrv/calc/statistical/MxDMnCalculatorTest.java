@@ -15,6 +15,6 @@ public class MxDMnCalculatorTest {
 		RRData data = new RRData(null, TimeUnit.SECOND, valueData, TimeUnit.SECOND);
 		
 		MxDMnCalculator calc = new MxDMnCalculator();
-		assertEquals(6.5, calc.process(data), 0.0000001);
+		assertEquals(6.5, calc.process(data).getValue(), 0.0000001);
 	}
 }

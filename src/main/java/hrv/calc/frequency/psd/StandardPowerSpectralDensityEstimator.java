@@ -36,7 +36,7 @@ public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensi
 	private double[] calculatePower(RRData rr) {
 		double[] rrY = rr.getValueAxis();
 		AvgSampleSizeCalculator calc = new AvgSampleSizeCalculator();
-		double avgSampleSize = calc.process(rr);
+		double avgSampleSize = calc.process(rr).getValue();
 		
 		final FastFourierTransformer fft = new FastFourierTransformer(DftNormalization.STANDARD);
 		final Complex[] fftres = fft.transform(rrY, TransformType.FORWARD);
@@ -55,7 +55,7 @@ public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensi
 	
 	private double[] calculateFrequencies(RRData rr) {
 		AvgSampleSizeCalculator calc = new AvgSampleSizeCalculator();
-		double sampleFrequency = 1 / calc.process(rr);
+		double sampleFrequency = 1 / calc.process(rr).getValue();
 		double maxAbtastFrequenz = 0.5 * sampleFrequency;
 
 		// Calculate Frequencies to corresponding power values

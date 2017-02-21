@@ -1,5 +1,6 @@
 package hrv.calc.statistical;
 
+import hrv.HRVParameter;
 import hrv.RRData;
 import hrv.calc.HRVDataProcessor;
 
@@ -13,17 +14,17 @@ import hrv.calc.HRVDataProcessor;
 public class BaevskyCalculator implements HRVDataProcessor {
 
 	@Override
-	public double process(RRData rrinterval) {
+	public HRVParameter process(RRData rrinterval) {
 		
 		ModeCalculator modeCalc = new ModeCalculator();		
-		double mode = modeCalc.process(rrinterval);
+		double mode = modeCalc.process(rrinterval).getValue();
 
 		AmplitudeModeCalculator ampModeCalc = new AmplitudeModeCalculator();
-		double amplitudeMode = ampModeCalc.process(rrinterval); 
+		double amplitudeMode = ampModeCalc.process(rrinterval).getValue();
 		
 		MxDMnCalculator mxdmnCalc = new MxDMnCalculator();
-		double mxdmn = mxdmnCalc.process(rrinterval);
+		double mxdmn = mxdmnCalc.process(rrinterval).getValue();
 		
-		return amplitudeMode / (2 * mode * mxdmn);
+		return new HRVParameter("Beavsky", amplitudeMode / (2 * mode * mxdmn), "non");
 	}
 }

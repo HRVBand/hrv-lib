@@ -1,6 +1,7 @@
 package hrv.calc.statistical;
 
 import common.ArrayUtils;
+import hrv.HRVParameter;
 import hrv.RRData;
 import hrv.calc.HRVDataProcessor;
 
@@ -14,11 +15,11 @@ import hrv.calc.HRVDataProcessor;
 public class MxDMnCalculator implements HRVDataProcessor {
 
 	@Override
-	public double process(RRData data) {
+	public HRVParameter process(RRData data) {
 		double max = ArrayUtils.max(data.getValueAxis());
 		double min = ArrayUtils.min(data.getValueAxis());
 		
-		return max - min;
+		return new HRVParameter("MxDMn", max - min, "non");
 	}
 
 }

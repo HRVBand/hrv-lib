@@ -19,6 +19,6 @@ public class BaevskyCalculatorTest {
 		double mxdmn = 7.0;
 		
 		BaevskyCalculator calc = new BaevskyCalculator();
-		assertEquals(ampMode / (2.0 * mode * mxdmn), calc.process(data), 0.000001);
+		assertEquals(ampMode / (2.0 * mode * mxdmn), calc.process(data).getValue(), 0.000001);
 	}
 }

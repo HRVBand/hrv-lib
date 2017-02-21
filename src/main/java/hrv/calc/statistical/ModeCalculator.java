@@ -1,12 +1,13 @@
 package hrv.calc.statistical;
 
+import hrv.HRVParameter;
 import hrv.RRData;
 import hrv.calc.HRVDataProcessor;
 
 public class ModeCalculator implements HRVDataProcessor {
 
 	@Override
-	public double process(RRData data) {
+	public HRVParameter process(RRData data) {
 		
 		double[] a = data.getValueAxis();
 		double maxValue = 0;
@@ -29,6 +30,6 @@ public class ModeCalculator implements HRVDataProcessor {
 			}
 		}
 
-		return maxValue;
+		return new HRVParameter("Mode", maxValue, "non");
 	}
 }
