@@ -23,7 +23,7 @@ public class LFnuCalculator implements HRVPowerSpectrumProcessor {
 		PowerSpectrumIntegralCalculator calcHf = new PowerSpectrumIntegralCalculator(hfLowerLimit, hfUpperLimit);
 		double hf = calcHf.process(ps);
 		
-		return hf / (lf + hf);
+		return lf / (lf + hf);
 	}
 
 }
