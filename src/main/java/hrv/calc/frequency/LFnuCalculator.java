@@ -12,7 +12,7 @@ public class LFnuCalculator implements HRVPowerSpectrumProcessor {
 	public LFnuCalculator(double lfLowerLimit, double lfUpperLimit, double hfLowerLimit, double hfUpperLimit) {
 		this.lfLowerLimit = lfLowerLimit;
 		this.lfUpperLimit = lfUpperLimit;
-		this.hfLowerLimit = lfLowerLimit;
+		this.hfLowerLimit = hfLowerLimit;
 		this.hfUpperLimit = hfUpperLimit;
 	}
 	@Override
