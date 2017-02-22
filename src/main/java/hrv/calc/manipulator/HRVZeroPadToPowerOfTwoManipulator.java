@@ -14,12 +14,12 @@ import hrv.calc.frequency.AvgSampleSizeCalculator;
 public class HRVZeroPadToPowerOfTwoManipulator implements HRVDataManipulator {
 
 	@Override
-	public void manipulate(RRData data) {
+	public RRData manipulate(RRData data) {
 		int length = data.getTimeAxis().length;
 
 		// Check if length is already a power of two.
 		if ((length & -length) == length) {
-			return; //If so return
+			return data; //If so return
 		}
 
 		int paddingUntil = MathUtils.largestNumThatIsPowerOf2(length) * 2;
@@ -31,8 +31,7 @@ public class HRVZeroPadToPowerOfTwoManipulator implements HRVDataManipulator {
 		double avgSampleSize = calc.process(data).getValue();
 		double[] newX = ArrayUtils.continueWith(data.getTimeAxis(), avgSampleSize, numOfNewNumbers);
 
-		data.setTimeAxis(newX);
-		data.setValueAxis(newY);
+		return new RRData(newX, data.getTimeAxisUnit(), newY, data.getValueAxisUnit());		
 	}
 
 }

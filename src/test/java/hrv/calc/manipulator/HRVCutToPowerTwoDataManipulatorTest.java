@@ -17,7 +17,7 @@ public class HRVCutToPowerTwoDataManipulatorTest {
 		RRData data = new RRData(time1, TimeUnit.SECOND, values1, TimeUnit.SECOND);
 		
 		HRVCutToPowerTwoDataManipulator mani = new HRVCutToPowerTwoDataManipulator();
-		mani.manipulate(data);
+		data = mani.manipulate(data);
 		
 		assertEquals(4, data.getTimeAxis().length);
 		assertEquals(4, data.getValueAxis().length);
@@ -30,7 +30,7 @@ public class HRVCutToPowerTwoDataManipulatorTest {
 		RRData data2 = new RRData(time2, TimeUnit.SECOND, values2, TimeUnit.SECOND);
 
 		HRVCutToPowerTwoDataManipulator mani = new HRVCutToPowerTwoDataManipulator();
-		mani.manipulate(data2);
+		data2 = mani.manipulate(data2);
 		
 		assertEquals(4, data2.getValueAxis().length);
 		assertEquals(1.1, data2.getValueAxis()[0], 0.00001);

@@ -12,19 +12,21 @@ import hrv.RRData;
 public class HRVCutToPowerTwoDataManipulator implements HRVDataManipulator {
 
 	@Override
-	public void manipulate(RRData data) {
+	public RRData manipulate(RRData data) {
 		int cutAt = MathUtils.largestNumThatIsPowerOf2(data.getTimeAxis().length);
 
+		double[] oldRRY = data.getValueAxis();
+		double[] oldRRX = data.getTimeAxis();
+		
 		double[] newX = new double[cutAt];
 		double[] newY = new double[cutAt];
 
 		for (int i = data.getTimeAxis().length - cutAt; i < data.getTimeAxis().length; i++) {
-			newX[i - (data.getTimeAxis().length - cutAt)] = data.getTimeAxis()[i];
-			newY[i - (data.getTimeAxis().length - cutAt)] = data.getValueAxis()[i];
+			newX[i - (data.getTimeAxis().length - cutAt)] = oldRRX[i];
+			newY[i - (data.getTimeAxis().length - cutAt)] = oldRRY[i];
 		}
-
-		data.setTimeAxis(newX);
-		data.setValueAxis(newY);
+		
+		return new RRData(newX, data.getTimeAxisUnit(), newY, data.getValueAxisUnit());
 	}
 
 }

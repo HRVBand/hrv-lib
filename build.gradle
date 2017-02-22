@@ -5,6 +5,13 @@
  * For more details take a look at the Java Quickstart chapter in the Gradle
  * user guide available at https://docs.gradle.org/3.3/userguide/tutorial_java_projects.html
  */
+ 
+buildscript {
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = JavaVersion.VERSION_1_7
+        targetCompatibility = JavaVersion.VERSION_1_7
+    }
+}
 
  plugins {
     id "org.sonarqube" version "2.2.1"

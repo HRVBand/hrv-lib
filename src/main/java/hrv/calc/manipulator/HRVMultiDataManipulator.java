@@ -10,10 +10,14 @@ public class HRVMultiDataManipulator implements HRVDataManipulator {
 	List<HRVDataManipulator> manipulators = new ArrayList<>();
 	
 	@Override
-	public void manipulate(RRData data) {
+	public RRData manipulate(RRData data) {
+		
+		RRData currentData = data;		
 		for(HRVDataManipulator mani : manipulators) {
-			mani.manipulate(data);
+			currentData = mani.manipulate(currentData);
 		}
+
+		return currentData;
 	}
 	
 	public void addManipulator(HRVDataManipulator manipulator) {

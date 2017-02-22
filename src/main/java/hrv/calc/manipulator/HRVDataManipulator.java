@@ -5,5 +5,5 @@ import hrv.RRData;
 @FunctionalInterface
 public interface HRVDataManipulator {
 
-	public void manipulate(RRData data);
+	public RRData manipulate(RRData data);
 }

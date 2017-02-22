@@ -16,7 +16,7 @@ public class WindowTests {
 		RRData data = new RRData(time1, TimeUnit.SECOND, values1, TimeUnit.SECOND);
 		
 		NoWindow wnd = new NoWindow();
-		wnd.manipulate(data);
+		data = wnd.manipulate(data);
 		
 		assertEquals(1.0, data.getValueAxis()[0], 0.000001);
 		assertEquals(1.1, data.getValueAxis()[1], 0.000001);
@@ -32,7 +32,7 @@ public class WindowTests {
 		RRData data = new RRData(time1, TimeUnit.SECOND, values1, TimeUnit.SECOND);
 		
 		HammingWindow wnd = new HammingWindow();
-		wnd.manipulate(data);
+		data = wnd.manipulate(data);
 		
 		assertEquals(0.08, data.getValueAxis()[0], 0.00001);
 		assertEquals(0.77, data.getValueAxis()[1], 0.00001);

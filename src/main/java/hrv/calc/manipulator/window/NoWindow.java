@@ -6,8 +6,8 @@ import hrv.calc.manipulator.HRVDataManipulator;
 public class NoWindow implements HRVDataManipulator {
 
 	@Override
-	public void manipulate(RRData data) {
-		//Does nothing
+	public RRData manipulate(RRData data) {
+		return data;
 	}
 
 }

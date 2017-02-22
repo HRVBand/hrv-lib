@@ -17,7 +17,7 @@ public class HRVSubstractMeanManipulatorTest {
 		RRData data = new RRData(time1, TimeUnit.SECOND, values1, TimeUnit.SECOND);		
 		
 		HRVSubstractMeanManipulator mani = new HRVSubstractMeanManipulator();
-		mani.manipulate(data);
+		data = mani.manipulate(data);
 		
 		assertEquals(-7.0/4.0, data.getValueAxis()[0], 0.000001);
 	}

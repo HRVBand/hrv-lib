@@ -17,7 +17,7 @@ public class HRVZeroPaddingManipulatorTest {
 		RRData data2 = new RRData(time2, TimeUnit.SECOND, values2, TimeUnit.SECOND);
 
 		HRVZeroPadToPowerOfTwoManipulator mani = new HRVZeroPadToPowerOfTwoManipulator();
-		mani.manipulate(data2);
+		data2 = mani.manipulate(data2);
 		
 		assertEquals(8, data2.getValueAxis().length);
 		assertEquals(1.0, data2.getValueAxis()[0], 0.00001);
@@ -39,7 +39,7 @@ public class HRVZeroPaddingManipulatorTest {
 		RRData data = new RRData(time1, TimeUnit.SECOND, values1, TimeUnit.SECOND);
 		
 		HRVZeroPadToPowerOfTwoManipulator mani = new HRVZeroPadToPowerOfTwoManipulator();
-		mani.manipulate(data);
+		data = mani.manipulate(data);
 		
 		assertEquals(4, data.getTimeAxis().length);
 		assertEquals(4, data.getValueAxis().length);
