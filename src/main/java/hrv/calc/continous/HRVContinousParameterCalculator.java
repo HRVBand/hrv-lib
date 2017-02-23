@@ -8,10 +8,9 @@ import common.RotatingMaxSizeList;
 import hrv.HRVParameter;
 import hrv.RRData;
 import hrv.calc.HRVDataProcessor;
-import hrv.calc.HRVIBIListener;
 import units.TimeUnitConverter.TimeUnit;
 
-public abstract class HRVContinousParameterCalculator implements HRVIBIListener, HRVDataProcessor{
+public abstract class HRVContinousParameterCalculator implements HRVRRIntervalListener, HRVDataProcessor{
 
 	List<HRVParameterChangedListener> listeners = new ArrayList<>();
 	RotatingMaxSizeList<Double> ibis;
@@ -36,8 +35,8 @@ public abstract class HRVContinousParameterCalculator implements HRVIBIListener,
 	 * The given {@code ibi} must be in seconds.
 	 */
 	@Override
-	public void ibiMeasured(double ibi) {
-		ibis.add(ibi);
+	public void newRRInterval(HRVRRIntervalEvent eventArgs) {
+		ibis.add(eventArgs.getRr());
 		
 		RRData rrData = RRData.createFromRRInterval(ArrayUtils.toPrimitive(ibis.getArray()), TimeUnit.SECOND);
 		notifyAll(process(rrData));
