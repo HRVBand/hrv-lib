@@ -31,6 +31,16 @@ public class ArrayUtils {
 
 		return array;
 	}
+	
+	public static double[] toPrimitive(Double[] array) {
+		double[] newArray = new double[array.length];
+		
+		for(int i = 0; i < array.length; i++) {
+			newArray[i] = array[i];
+		}
+		
+		return newArray;
+	}
 
 	public static double min(double[] array) {
 		double min = array[0];
