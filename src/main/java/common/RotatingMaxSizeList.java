@@ -7,7 +7,7 @@ public class RotatingMaxSizeList<T> {
     private int currentlastElementIndex = -1;
     
     public RotatingMaxSizeList(T[] array) {
-        a = array;
+        this.a = array;
     }
 
 	public T get(int arg0) {

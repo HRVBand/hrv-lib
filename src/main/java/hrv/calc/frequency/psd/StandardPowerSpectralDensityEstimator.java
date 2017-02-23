@@ -60,7 +60,7 @@ public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensi
 
 		// Calculate Frequencies to corresponding power values
 		// Frequency Steps in Hz
-		double frequencySteps = (2 * maxAbtastFrequenz) / rr.getTimeAxis().length;
+		double frequencySteps = (2 * maxAbtastFrequenz) / (rr.getTimeAxis().length);
 		double[] frequencies = new double[rr.getTimeAxis().length];
 
 		for (int i = 0; i < frequencies.length; i++) {

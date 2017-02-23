@@ -36,7 +36,7 @@ public class ArrayUtils {
 		double[] newArray = new double[array.length];
 		
 		for(int i = 0; i < array.length; i++) {
-			newArray[i] = array[i];
+			newArray[i] = array[i] == null ? 0.0 : array[i].doubleValue();
 		}
 		
 		return newArray;
