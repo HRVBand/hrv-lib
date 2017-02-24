@@ -1,6 +1,6 @@
 package common;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.math.RoundingMode;
 
@@ -17,5 +17,11 @@ public class MathUtilsTest {
 		
 		double roundedNum2 = MathUtils.round(num, 2, RoundingMode.HALF_DOWN);
 		assertEquals(111.11, roundedNum2, 0.0001);	
+	}
+	
+	@Test
+	public void testAlmostEquals() {
+		assertFalse(MathUtils.almostEqual(0.0, 0.1, 0.01));
+		assertTrue(MathUtils.almostEqual(0.0, 0.01, 0.1));
 	}
 }
