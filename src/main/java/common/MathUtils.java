@@ -49,4 +49,8 @@ public class MathUtils {
 	public static int largestNumThatIsPowerOf2(int n) {
 		return Integer.highestOneBit(n);
 	}
+	
+	public static boolean almostEqual(double a, double b, double eps){
+	    return Math.abs(a-b)<eps;
+	}
 }

@@ -1,5 +1,6 @@
 package hrv.calc.continous;
 
+import common.MathUtils;
 import hrv.HRVParameter;
 import hrv.RRData;
 
@@ -11,8 +12,15 @@ public class HRVContinousPulse extends HRVContinousParameterCalculator {
 
 	@Override
 	public HRVParameter process(RRData data) {
-		double lastTimeValue = data.getTimeAxis()[data.getTimeAxis().length - 1];
-		double beatsPerSecond = (data.getTimeAxis().length - 1) / lastTimeValue;
+		
+		double[] values = data.getValueAxis();
+		double sum = 0.0;
+		for(int i = 0; i < values.length; i++) {
+			sum += 1.0 / values[i];
+		}
+		
+		double beatsPerSecond = sum / values.length;
+					
 		return new HRVParameter("Pulse", beatsPerSecond * 60, "Beats / Minute");
 	}
 }

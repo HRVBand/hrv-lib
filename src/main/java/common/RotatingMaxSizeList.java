@@ -3,6 +3,7 @@ package common;
 public class RotatingMaxSizeList<T> {
 
     private final T[] a;
+    private int fillRate;
 
     private int currentlastElementIndex = -1;
     
@@ -18,9 +19,20 @@ public class RotatingMaxSizeList<T> {
 		return a.length;
 	}
 	
+	/**
+	 * Returns how full the list is
+	 * @return how full the list is
+	 */
+	public int fillRate() {
+		return fillRate;
+	}
+	
 	public boolean add(T first) {		
 		currentlastElementIndex = (currentlastElementIndex + 1) % a.length;
 		a[currentlastElementIndex] = first;
+		
+		fillRate = Math.min(size(), currentlastElementIndex + 1);
+		
 		return true;
 	}
 	

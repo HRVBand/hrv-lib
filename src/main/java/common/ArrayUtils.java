@@ -1,5 +1,6 @@
 package common;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,24 +23,48 @@ public class ArrayUtils {
 	 *            List to convert
 	 * @return Array filled with the data of the given list.
 	 */
-	public static double[] listToArray(final List<Double> list) {
+	public static double[] toPrimitive(final List<Double> list, double defaultValue) {
 		double[] array = new double[list.size()];
 
 		for (int i = 0; i < list.size(); i++) {
-			array[i] = list.get(i) == null ? 0.0 : list.get(i);
+			array[i] = list.get(i) == null ? defaultValue : list.get(i);
 		}
 
 		return array;
 	}
-	
-	public static double[] toPrimitive(Double[] array) {
+
+	public static double[] toPrimitive(Double[] array, double defaultValue) {
 		double[] newArray = new double[array.length];
-		
-		for(int i = 0; i < array.length; i++) {
-			newArray[i] = array[i] == null ? 0.0 : array[i].doubleValue();
+
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = array[i] == null ? defaultValue : array[i].doubleValue();
+		}
+
+		return newArray;
+	}
+
+	public static double[] toPrimitiveIgnoreNull(Double[] array) {
+		ArrayList<Double> newArray = new ArrayList<>();
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != null) {
+				newArray.add(array[i]);
+			}
+		}
+
+		return toPrimitive(newArray, 0.0);
+	}
+
+	public static double[] toPrimitiveIgnoreNull(List<Double> list) {
+		List<Double> withoutNull = new ArrayList<>();
+
+		for (Double d : list) {
+			if (d != null) {
+				withoutNull.add(d);
+			}
 		}
 		
-		return newArray;
+		return toPrimitive(withoutNull, 0.0);
 	}
 
 	public static double min(double[] array) {
@@ -87,9 +112,9 @@ public class ArrayUtils {
 	}
 
 	public static double[] continueWith(double[] data, double increment, int numOfNewIncrements) {
-		if(numOfNewIncrements < 0)
+		if (numOfNewIncrements < 0)
 			throw new IllegalArgumentException("Number of new increments must be larger than or equal to 0.");
-				
+
 		double[] newData = new double[data.length + numOfNewIncrements];
 
 		// Transfer existing data

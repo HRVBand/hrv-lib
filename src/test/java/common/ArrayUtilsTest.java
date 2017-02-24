@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class ArrayUtilsTest {
 
 	@Test
-	public void testListToArray() {
+	public void testListToPrimitiveWithDefaultValue() {
 		ArrayList<Double> list = new ArrayList<>();
 		list.add(1.0);
 		list.add(2.0);
@@ -16,7 +16,7 @@ public class ArrayUtilsTest {
 		list.add(4.0);
 		list.add(null);
 
-		double[] array = ArrayUtils.listToArray(list);
+		double[] array = ArrayUtils.toPrimitive(list, 0.0);
 
 		assertEquals(array.length, list.size());
 		assertEquals(array[0], list.get(0), 0.001);

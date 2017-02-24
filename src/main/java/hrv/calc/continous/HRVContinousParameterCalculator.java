@@ -38,7 +38,7 @@ public abstract class HRVContinousParameterCalculator implements HRVRRIntervalLi
 	public void newRRInterval(HRVRRIntervalEvent eventArgs) {
 		ibis.add(eventArgs.getRr());
 		Double[] ibisArray = ibis.getArray();
-		double[] ibisArrayPrimitive = ArrayUtils.toPrimitive(ibisArray);
+		double[] ibisArrayPrimitive = ArrayUtils.toPrimitiveIgnoreNull(ibisArray);
 		RRData rrData = RRData.createFromRRInterval(ibisArrayPrimitive, TimeUnit.SECOND);
 		notifyAll(process(rrData));
 	}

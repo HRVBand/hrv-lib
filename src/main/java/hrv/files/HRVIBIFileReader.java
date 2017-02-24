@@ -25,7 +25,7 @@ public class HRVIBIFileReader {
 			}
 		}
 		
-		return createFromRRInterval(ArrayUtils.listToArray(rr), unit);
+		return createFromRRInterval(ArrayUtils.toPrimitive(rr, 0.0), unit);
 	}
 	
 	private RRData createFromRRInterval(double[] rrInterval, TimeUnit unit) {
