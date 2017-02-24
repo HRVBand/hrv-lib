@@ -19,11 +19,11 @@ public abstract class HRVContinousParameterCalculator implements HRVRRIntervalLi
 		ibis = new RotatingMaxSizeList<>(new Double[size]);
 	}
 	
-	void addHRVParameterChangedListener(HRVParameterChangedListener listener) {
+	public void addHRVParameterChangedListener(HRVParameterChangedListener listener) {
 		listeners.add(listener);
 	}
 	
-	void removeHRVParameterChangedListener(HRVParameterChangedListener listener) {
+	public void removeHRVParameterChangedListener(HRVParameterChangedListener listener) {
 		if(listeners.contains(listener)) {
 			listeners.remove(listener);	
 		}

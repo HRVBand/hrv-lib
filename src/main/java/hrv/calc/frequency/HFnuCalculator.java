@@ -19,12 +19,11 @@ public class HFnuCalculator implements HRVPowerSpectrumProcessor {
 	@Override
 	public double process(PowerSpectrum ps) {
 		
-		PowerSpectrumIntegralCalculator calcLf = new PowerSpectrumIntegralCalculator(lfLowerLimit, lfUpperLimit);
-		double lf = calcLf.process(ps);
-		
 		PowerSpectrumIntegralCalculator calcHf = new PowerSpectrumIntegralCalculator(hfLowerLimit, hfUpperLimit);
 		double hf = calcHf.process(ps);
 		
+		PowerSpectrumIntegralCalculator calcLf = new PowerSpectrumIntegralCalculator(lfLowerLimit, lfUpperLimit);
+		double lf = calcLf.process(ps);
 		
 		return hf / (lf + hf);
 	}
