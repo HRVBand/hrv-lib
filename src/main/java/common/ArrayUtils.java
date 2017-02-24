@@ -26,7 +26,7 @@ public class ArrayUtils {
 		double[] array = new double[list.size()];
 
 		for (int i = 0; i < list.size(); i++) {
-			array[i] = list.get(i);
+			array[i] = list.get(i) == null ? 0.0 : list.get(i);
 		}
 
 		return array;

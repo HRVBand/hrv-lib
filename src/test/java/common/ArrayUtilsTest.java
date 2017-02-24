@@ -14,11 +14,13 @@ public class ArrayUtilsTest {
 		list.add(2.0);
 		list.add(3.0);
 		list.add(4.0);
+		list.add(null);
 
 		double[] array = ArrayUtils.listToArray(list);
 
 		assertEquals(array.length, list.size());
 		assertEquals(array[0], list.get(0), 0.001);
+		assertEquals(array[4], 0.0, 0.001);
 	}
 
 	@Test
