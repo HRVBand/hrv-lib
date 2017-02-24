@@ -27,4 +27,20 @@ public class RotatingMaxSizeListTest {
 		RotatingMaxSizeList<Double> list = new RotatingMaxSizeList<Double>(new Double[4]);
 		assertEquals(4, list.size());
 	}
+	
+	@Test
+	public void testFillReate() {
+		RotatingMaxSizeList<Double> list = new RotatingMaxSizeList<Double>(new Double[4]);
+		assertEquals(0, list.fillRate());
+		list.add(5.0);
+		assertEquals(1, list.fillRate());
+		list.add(2.0);
+		assertEquals(2, list.fillRate());
+		list.add(3.0);
+		assertEquals(3, list.fillRate());
+		list.add(4.0);
+		assertEquals(4, list.fillRate());
+		list.add(6.0);
+		assertEquals(4, list.fillRate());
+	}
 }

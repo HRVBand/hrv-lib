@@ -31,7 +31,7 @@ public class RotatingMaxSizeList<T> {
 		currentlastElementIndex = (currentlastElementIndex + 1) % a.length;
 		a[currentlastElementIndex] = first;
 		
-		fillRate = Math.min(size(), currentlastElementIndex + 1);
+		fillRate = Math.max(fillRate(), currentlastElementIndex + 1);
 		
 		return true;
 	}
