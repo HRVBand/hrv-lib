@@ -2,6 +2,8 @@
 /bin/
 /build/reports/
 /build/test-results/
+/build/libs/
+/build/jacoco/
 
 # Eclipse .gitignore
 .metadata
