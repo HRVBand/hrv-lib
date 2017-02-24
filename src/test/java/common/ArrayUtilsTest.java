@@ -24,6 +24,42 @@ public class ArrayUtilsTest {
 	}
 
 	@Test
+	public void testListToPrimitiveIgnoreNull() {
+		ArrayList<Double> list = new ArrayList<>();
+		list.add(1.0);
+		list.add(2.0);
+		list.add(3.0);
+		list.add(4.0);
+		list.add(null);
+
+		double[] array = ArrayUtils.toPrimitiveIgnoreNull(list);
+
+		assertEquals(array.length, list.size() - 1);
+		assertEquals(array[0], list.get(0), 0.001);
+		assertEquals(array[3], 4.0, 0.001);
+	}
+
+	@Test
+	public void testArrayToPrimitive() {
+		Double[] array = new Double[] { 1.0, 2.0, 3.0, 4.0, null };
+		double[] primitiveArray = ArrayUtils.toPrimitive(array, 5.0);
+
+		assertEquals(array.length, primitiveArray.length);
+		assertEquals(array[0], primitiveArray[0], 0.001);
+		assertEquals(5.0, primitiveArray[4], 0.001);
+	}
+	
+	@Test
+	public void testArrayToPrimitiveIgnoreNull() {
+		Double[] array = new Double[] { 1.0, 2.0, 3.0, 4.0, null };
+		double[] primitiveArray = ArrayUtils.toPrimitiveIgnoreNull(array);
+
+		assertEquals(array.length - 1, primitiveArray.length);
+		assertEquals(array[0], primitiveArray[0], 0.001);
+		assertEquals(array[3], 4.0, 0.001);
+	}
+
+	@Test
 	public void testMin() {
 		double[] arr = new double[] { 1.0, 2.0, 0.0, 100.0, 99.9999, 0.000001 };
 		assertEquals(0.0, ArrayUtils.min(arr), 0.0000000001);
@@ -72,39 +108,37 @@ public class ArrayUtilsTest {
 	public void testContinouWith() {
 		double[] arr = new double[] { 0.0, 1.0, 2.0 };
 		double[] newArr = ArrayUtils.continueWith(arr, 1.0, 2);
-		
+
 		assertEquals(3.0, newArr[3], 0.00001);
 		assertEquals(4.0, newArr[4], 0.00001);
 		assertEquals(5, newArr.length);
-		
 
 		double[] arr2 = new double[] { 1.0, 2.0, 3.0 };
 		double[] newArr2 = ArrayUtils.continueWith(arr2, 1.0, 2);
-		
+
 		assertEquals(4.0, newArr2[3], 0.00001);
 		assertEquals(5.0, newArr2[4], 0.00001);
 		assertEquals(5, newArr2.length);
 	}
-	
+
 	@Test
 	public void testContinouWithZeroLengthArray() {
 		double[] arr = new double[0];
 		double[] newArr = ArrayUtils.continueWith(arr, 2.0, 2);
 
-		assertEquals(2, newArr.length);		
+		assertEquals(2, newArr.length);
 		assertEquals(2.0, newArr[0], 0.00001);
 		assertEquals(4.0, newArr[1], 0.00001);
 	}
-	
+
 	@Test
 	public void testContinouWithDontContinou() {
 		double[] arr = new double[0];
 		double[] newArr = ArrayUtils.continueWith(arr, 1.0, 0);
-		assertEquals(0, newArr.length);		
-		
+		assertEquals(0, newArr.length);
 
 		double[] arr2 = new double[] { 1.0, 2.0, 3.0 };
 		double[] newArr2 = ArrayUtils.continueWith(arr2, 1.0, 0);
-		assertEquals(3, newArr2.length);		
+		assertEquals(3, newArr2.length);
 	}
 }
