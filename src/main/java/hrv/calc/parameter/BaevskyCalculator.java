@@ -1,8 +1,6 @@
-package hrv.calc.statistical;
+package hrv.calc.parameter;
 
-import hrv.HRVParameter;
 import hrv.RRData;
-import hrv.calc.HRVDataProcessor;
 
 /**
  * Calculates the Baevsky Stress Index corresponding to http://rainer-bartosch.de/HRV/Fachseminar_IMD_HRV.pdf

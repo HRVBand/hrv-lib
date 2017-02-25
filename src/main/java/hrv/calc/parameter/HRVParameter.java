@@ -1,4 +1,4 @@
-package hrv;
+package hrv.calc.parameter;
 
 public class HRVParameter {
 

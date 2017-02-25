@@ -1,4 +1,4 @@
-package hrv.calc.frequency.psd;
+package hrv.calc.psd;
 
 public class PowerSpectrum {
 

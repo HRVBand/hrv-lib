@@ -1,6 +1,9 @@
 package algorithm;
 
 import org.junit.Test;
+
+import algorithm.search.FindIndexOfClosestValueSorted;
+
 import static org.junit.Assert.*;
 
 public class FindIndexOfClosestValueSortedTest {

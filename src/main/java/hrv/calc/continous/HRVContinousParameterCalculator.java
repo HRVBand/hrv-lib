@@ -5,9 +5,9 @@ import java.util.List;
 
 import common.ArrayUtils;
 import common.RotatingMaxSizeList;
-import hrv.HRVParameter;
 import hrv.RRData;
-import hrv.calc.HRVDataProcessor;
+import hrv.calc.parameter.HRVDataProcessor;
+import hrv.calc.parameter.HRVParameter;
 import units.TimeUnitConverter.TimeUnit;
 
 public abstract class HRVContinousParameterCalculator implements HRVRRIntervalListener, HRVDataProcessor{

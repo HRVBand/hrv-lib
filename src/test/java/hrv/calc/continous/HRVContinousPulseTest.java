@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import hrv.HRVParameter;
 import hrv.RRData;
+import hrv.calc.parameter.HRVParameter;
 import units.TimeUnitConverter.TimeUnit;
 
 public class HRVContinousPulseTest {

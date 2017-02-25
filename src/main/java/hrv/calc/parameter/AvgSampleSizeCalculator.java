@@ -1,8 +1,6 @@
-package hrv.calc.frequency;
+package hrv.calc.parameter;
 
-import hrv.HRVParameter;
 import hrv.RRData;
-import hrv.calc.HRVDataProcessor;
 
 public class AvgSampleSizeCalculator implements HRVDataProcessor {
 

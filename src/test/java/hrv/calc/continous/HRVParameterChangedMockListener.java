@@ -1,5 +1,5 @@
 package hrv.calc.continous;
 
-import hrv.HRVParameter;
+import hrv.calc.parameter.HRVParameter;
 
 

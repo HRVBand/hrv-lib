@@ -1,6 +1,6 @@
-package hrv.calc.frequency;
+package hrv.calc.parameter;
 
-import hrv.calc.frequency.psd.PowerSpectrum;
+import hrv.calc.psd.PowerSpectrum;
 
 @FunctionalInterface
 public interface HRVPowerSpectrumProcessor {

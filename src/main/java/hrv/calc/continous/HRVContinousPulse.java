@@ -1,8 +1,7 @@
 package hrv.calc.continous;
 
-import common.MathUtils;
-import hrv.HRVParameter;
 import hrv.RRData;
+import hrv.calc.parameter.HRVParameter;
 
 public class HRVContinousPulse extends HRVContinousParameterCalculator {
 

@@ -1,6 +1,7 @@
-package hrv.calc.frequency;
+package hrv.calc.parameter;
 
-import hrv.calc.frequency.psd.PowerSpectrum;
+import hrv.calc.psd.PowerSpectrum;
+import hrv.calc.psd.PowerSpectrumIntegralCalculator;
 
 public class LFnuCalculator implements HRVPowerSpectrumProcessor {
 	

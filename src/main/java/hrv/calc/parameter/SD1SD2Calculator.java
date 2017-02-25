@@ -1,8 +1,6 @@
-package hrv.calc.statistical;
+package hrv.calc.parameter;
 
-import hrv.HRVParameter;
 import hrv.RRData;
-import hrv.calc.HRVDataProcessor;
 
 public class SD1SD2Calculator implements HRVDataProcessor {
 

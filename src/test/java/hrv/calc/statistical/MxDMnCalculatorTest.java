@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import hrv.RRData;
+import hrv.calc.parameter.MxDMnCalculator;
 import units.TimeUnitConverter.TimeUnit;
 
 public class MxDMnCalculatorTest {

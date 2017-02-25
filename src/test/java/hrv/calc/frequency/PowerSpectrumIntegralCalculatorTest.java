@@ -4,7 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import hrv.calc.frequency.psd.PowerSpectrum;
+import hrv.calc.psd.PowerSpectrum;
+import hrv.calc.psd.PowerSpectrumIntegralCalculator;
 
 public class PowerSpectrumIntegralCalculatorTest {
 

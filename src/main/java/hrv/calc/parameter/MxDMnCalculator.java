@@ -1,9 +1,7 @@
-package hrv.calc.statistical;
+package hrv.calc.parameter;
 
 import common.ArrayUtils;
-import hrv.HRVParameter;
 import hrv.RRData;
-import hrv.calc.HRVDataProcessor;
 
 /**
  * Calculates the width of the variability (data.max - data.min)

@@ -1,10 +1,8 @@
-package hrv.calc.statistical;
+package hrv.calc.parameter;
 
 import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
 
-import hrv.HRVParameter;
 import hrv.RRData;
-import hrv.calc.HRVDataProcessor;
 
 public class SD2Calculator implements HRVDataProcessor {
 

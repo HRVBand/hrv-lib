@@ -1,4 +1,4 @@
-package hrv.calc.frequency.psd;
+package hrv.calc.psd;
 
 import org.apache.commons.math3.complex.Complex;
 import org.apache.commons.math3.transform.DftNormalization;
@@ -6,7 +6,7 @@ import org.apache.commons.math3.transform.FastFourierTransformer;
 import org.apache.commons.math3.transform.TransformType;
 
 import hrv.RRData;
-import hrv.calc.frequency.AvgSampleSizeCalculator;
+import hrv.calc.parameter.AvgSampleSizeCalculator;
 
 /**
  * Uses FFT to estimate the power spectra density of RR-Data-Intervals

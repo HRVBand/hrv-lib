@@ -3,7 +3,7 @@ package hrv.calc.manipulator;
 import common.ArrayUtils;
 import common.MathUtils;
 import hrv.RRData;
-import hrv.calc.frequency.AvgSampleSizeCalculator;
+import hrv.calc.parameter.AvgSampleSizeCalculator;
 
 /**
  * Appends Zeores to given RRData until the size of RRData is a power of two.

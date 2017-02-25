@@ -1,4 +1,4 @@
-package hrv.calc.frequency.psd;
+package hrv.calc.psd;
 
 import org.apache.commons.math3.analysis.UnivariateFunction;
 import org.apache.commons.math3.analysis.interpolation.SplineInterpolator;

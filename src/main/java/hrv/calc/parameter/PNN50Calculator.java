@@ -1,8 +1,6 @@
-package hrv.calc.statistical;
+package hrv.calc.parameter;
 
-import hrv.HRVParameter;
 import hrv.RRData;
-import hrv.calc.HRVDataProcessor;
 
 /**
  * Calculates the pNN50-HRV-Parameter from the given RR-interval-data.

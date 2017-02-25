@@ -1,6 +1,5 @@
-package hrv.calc;
+package hrv.calc.parameter;
 
-import hrv.HRVParameter;
 import hrv.RRData;
 
 @FunctionalInterface

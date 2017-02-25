@@ -1,9 +1,8 @@
-package hrv.calc.frequency;
+package hrv.calc.psd;
 
 import org.apache.commons.math3.analysis.integration.TrapezoidIntegrator;
 
-import hrv.calc.frequency.psd.PowerSpectrum;
-import hrv.calc.frequency.psd.PowerSpectrumUnivariateFunctionAdapter;
+import hrv.calc.parameter.HRVPowerSpectrumProcessor;
 
 public class PowerSpectrumIntegralCalculator implements HRVPowerSpectrumProcessor {
 

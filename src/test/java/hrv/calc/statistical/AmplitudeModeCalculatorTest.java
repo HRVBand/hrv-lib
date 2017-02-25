@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import hrv.RRData;
+import hrv.calc.parameter.AmplitudeModeCalculator;
 import units.TimeUnitConverter.TimeUnit;
 
 public class AmplitudeModeCalculatorTest {

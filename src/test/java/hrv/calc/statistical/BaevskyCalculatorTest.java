@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import hrv.RRData;
+import hrv.calc.parameter.BaevskyCalculator;
 import units.TimeUnitConverter.TimeUnit;
 
 public class BaevskyCalculatorTest {
