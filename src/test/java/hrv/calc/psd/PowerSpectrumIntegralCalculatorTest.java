@@ -1,4 +1,4 @@
-package hrv.calc.frequency;
+package hrv.calc.psd;
 
 import static org.junit.Assert.*;
 

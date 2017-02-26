@@ -1,4 +1,4 @@
-package hrv.calc.statistical;
+package hrv.calc.parameter;
 
 import static org.junit.Assert.*;
 
