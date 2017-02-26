@@ -2,6 +2,13 @@ package hrv.calc.manipulator;
 
 import hrv.RRData;
 
+/**
+ * Has the ability to cut a the data in a {@link RRData} object to a specified number.
+ * The remaining data are the last values in the {@link RRData} arrays
+ * 
+ * @author Julian
+ *
+ */
 public class HRVCutDataManipulator implements HRVDataManipulator {
 
 	private int numToKeep;
