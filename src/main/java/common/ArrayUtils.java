@@ -33,6 +33,14 @@ public class ArrayUtils {
 		return array;
 	}
 
+	/**
+	 * Casts the given Double array to a primitive double array. For occurring
+	 * null values in the Object array, a default value is inserted.
+	 * 
+	 * @param array Array to cast to primitive double array
+	 * @param defaultValue Value to add for null values in the given {@code Double} object array
+	 * @return primitive double array
+	 */
 	public static double[] toPrimitive(Double[] array, double defaultValue) {
 		double[] newArray = new double[array.length];
 
@@ -43,6 +51,15 @@ public class ArrayUtils {
 		return newArray;
 	}
 
+	/**
+	 * Casts a given array of {@code Double} to an array of primitive
+	 * {@code double} type. If a Double value in the given array is
+	 * {@code null}, the value is ignored.
+	 * 
+	 * @param array
+	 *            Array to cast.
+	 * @return double array containing the non null elements of the given array.
+	 */
 	public static double[] toPrimitiveIgnoreNull(Double[] array) {
 		ArrayList<Double> newArray = new ArrayList<>();
 
@@ -55,6 +72,14 @@ public class ArrayUtils {
 		return toPrimitive(newArray, 0.0);
 	}
 
+	/**
+	 * Casts a given List of {@code Double} to an {@code double} array. If a
+	 * Double value in the given list is {@code null}, the value is ignored.
+	 * 
+	 * @param list
+	 *            List to cast.
+	 * @return double array containing the non null elements of the list.
+	 */
 	public static double[] toPrimitiveIgnoreNull(List<Double> list) {
 		List<Double> withoutNull = new ArrayList<>();
 
@@ -63,10 +88,17 @@ public class ArrayUtils {
 				withoutNull.add(d);
 			}
 		}
-		
+
 		return toPrimitive(withoutNull, 0.0);
 	}
 
+	/**
+	 * Returns the smallest number in the array
+	 * 
+	 * @param array
+	 *            array to search the smallest number in
+	 * @return smallest number in the given array
+	 */
 	public static double min(double[] array) {
 		double min = array[0];
 		for (int i = 1; i < array.length; i++) {
@@ -75,6 +107,13 @@ public class ArrayUtils {
 		return min;
 	}
 
+	/**
+	 * Returns the biggest number in the array
+	 * 
+	 * @param array
+	 *            array to search the biggest number in
+	 * @return biggest number in the given array
+	 */
 	public static double max(double[] array) {
 		double max = array[0];
 		for (int i = 1; i < array.length; i++) {
@@ -111,6 +150,21 @@ public class ArrayUtils {
 		return newData;
 	}
 
+	/**
+	 * Continous the given data by increments of the last element in the data.
+	 * The value of the increment is defined by {@code increment}. The number of
+	 * increments is given by {@code numOfNewIncrements}. The length of the new
+	 * data array is {@code data.length + numOfNewIncrements}
+	 * 
+	 * @param data
+	 *            Data to add increments to
+	 * @param increment
+	 *            Size of the increments.
+	 * @param numOfNewIncrements
+	 *            Number of increments to add to the given data.
+	 * @return new array containing the old data and appended are the
+	 *         increments.
+	 */
 	public static double[] continueWith(double[] data, double increment, int numOfNewIncrements) {
 		if (numOfNewIncrements < 0)
 			throw new IllegalArgumentException("Number of new increments must be larger than or equal to 0.");

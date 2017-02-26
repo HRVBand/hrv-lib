@@ -91,6 +91,11 @@ public class ArrayUtilsTest {
 		assertEquals(0.000001, paddedArr[5], 0.0000000001);
 		assertEquals(arr.length, paddedArr.length);
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testForPadZerosForIllegalArgumentExcetion() {
+		ArrayUtils.padZeros(new double[] {1.0}, -1);
+	}
 
 	@Test
 	public void testPadToEmptyArray() {
@@ -140,5 +145,10 @@ public class ArrayUtilsTest {
 		double[] arr2 = new double[] { 1.0, 2.0, 3.0 };
 		double[] newArr2 = ArrayUtils.continueWith(arr2, 1.0, 0);
 		assertEquals(3, newArr2.length);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testContinouWithForIllegalArgumentException() {
+		ArrayUtils.continueWith(new double[] {0.0}, 2, -100);
 	}
 }
