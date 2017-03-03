@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import units.TimeUnitConverter.TimeUnit;
+import units.TimeUnit;
 
 public class RRDataTest {
 

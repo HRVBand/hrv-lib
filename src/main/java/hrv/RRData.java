@@ -1,7 +1,7 @@
 package hrv;
 
+import units.TimeUnit;
 import units.TimeUnitConverter;
-import units.TimeUnitConverter.TimeUnit;
 
 /**
  * Holds RR-Data and the corresponding X-Axis Values

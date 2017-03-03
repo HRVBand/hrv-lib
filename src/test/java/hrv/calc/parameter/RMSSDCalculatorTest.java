@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import hrv.RRData;
 import hrv.calc.parameter.RMSSDCalculator;
-import units.TimeUnitConverter.TimeUnit;
+import units.TimeUnit;
 
 public class RMSSDCalculatorTest {
 

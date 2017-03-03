@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import hrv.RRData;
 import hrv.calc.parameter.AvgSampleSizeCalculator;
-import units.TimeUnitConverter.TimeUnit;
+import units.TimeUnit;
 
 public class AvgSampleSizeCalculatorTest {
 

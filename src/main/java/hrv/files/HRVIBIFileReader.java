@@ -5,7 +5,7 @@ import java.util.*;
 
 import common.ArrayUtils;
 import hrv.RRData;
-import units.TimeUnitConverter.TimeUnit;
+import units.TimeUnit;
 
 public class HRVIBIFileReader {
 

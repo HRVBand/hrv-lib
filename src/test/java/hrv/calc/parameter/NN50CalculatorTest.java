@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import hrv.RRData;
 import hrv.calc.parameter.NN50Calculator;
-import units.TimeUnitConverter.TimeUnit;
+import units.TimeUnit;
 
 public class NN50CalculatorTest {
 

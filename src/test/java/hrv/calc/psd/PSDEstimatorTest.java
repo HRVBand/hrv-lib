@@ -7,7 +7,7 @@ import org.junit.Test;
 import hrv.RRData;
 import hrv.calc.psd.PowerSpectrum;
 import hrv.calc.psd.StandardPowerSpectralDensityEstimator;
-import units.TimeUnitConverter.TimeUnit;
+import units.TimeUnit;
 
 public class PSDEstimatorTest {
 

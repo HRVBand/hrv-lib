@@ -1,7 +1,7 @@
 package hrv.calc.parameter;
 
 import hrv.RRData;
-import units.TimeUnitConverter.TimeUnit;
+import units.TimeUnit;
 
 /**
  * Calculates the NN50 parameter from the given RR-interval-data.

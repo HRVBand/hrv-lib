@@ -2,7 +2,7 @@ package units;
 
 import org.junit.Test;
 
-import units.TimeUnitConverter.TimeUnit;
+import units.TimeUnit;
 
 import static org.junit.Assert.*;
 

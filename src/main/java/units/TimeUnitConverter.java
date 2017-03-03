@@ -2,7 +2,7 @@ package units;
 
 import java.util.EnumMap;
 
-public class TimeUnitConverter implements UnitConverter<TimeUnitConverter.TimeUnit> {
+public class TimeUnitConverter implements UnitConverter<TimeUnit> {
 
 	/**
 	 * Contains unit conversion factors relative to convert a unit to the unit s.
@@ -32,11 +32,5 @@ public class TimeUnitConverter implements UnitConverter<TimeUnitConverter.TimeUn
 		}
 	}
 
-	public enum TimeUnit {
-		DAY,
-		HOUR,
-		MINUTE,
-		SECOND,
-		MILLISECOND
-	}
+	
 }

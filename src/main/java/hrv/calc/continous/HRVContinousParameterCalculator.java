@@ -8,7 +8,7 @@ import common.RotatingMaxSizeList;
 import hrv.RRData;
 import hrv.calc.parameter.HRVDataProcessor;
 import hrv.calc.parameter.HRVParameter;
-import units.TimeUnitConverter.TimeUnit;
+import units.TimeUnit;
 
 public abstract class HRVContinousParameterCalculator implements HRVRRIntervalListener, HRVDataProcessor{
 

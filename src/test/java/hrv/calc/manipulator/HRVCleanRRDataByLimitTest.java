@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import hrv.RRData;
 import hrv.files.HRVIBIFileReader;
-import units.TimeUnitConverter.TimeUnit;
+import units.TimeUnit;
 
 public class HRVCleanRRDataByLimitTest {
 
