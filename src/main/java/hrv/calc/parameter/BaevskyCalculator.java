@@ -23,6 +23,6 @@ public class BaevskyCalculator implements HRVDataProcessor {
 		MxDMnCalculator mxdmnCalc = new MxDMnCalculator();
 		double mxdmn = mxdmnCalc.process(rrinterval).getValue();
 		
-		return new HRVParameter("Beavsky", amplitudeMode / (2 * mode * mxdmn), "non");
+		return new HRVParameter(HRVParameterEnum.BAEVSKY, amplitudeMode / (2 * mode * mxdmn), "non");
 	}
 }

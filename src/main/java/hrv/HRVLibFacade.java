@@ -14,6 +14,7 @@ import hrv.calc.parameter.AmplitudeModeCalculator;
 import hrv.calc.parameter.BaevskyCalculator;
 import hrv.calc.parameter.HRVDataProcessor;
 import hrv.calc.parameter.HRVParameter;
+import hrv.calc.parameter.HRVParameterEnum;
 import hrv.calc.parameter.MeanCaclulator;
 import hrv.calc.parameter.ModeCalculator;
 import hrv.calc.parameter.MxDMnCalculator;
@@ -82,18 +83,18 @@ public class HRVLibFacade {
 
 		if (params.contains(HRVParameterEnum.LF) || params.contains(HRVParameterEnum.LFHF)) {
 			PowerSpectrumIntegralCalculator calcLF = new PowerSpectrumIntegralCalculator(lfLowerBound, lfUpperBound);
-			lf = new HRVParameter("LF", calcLF.process(ps) * 1000000, unit);
+			lf = new HRVParameter(HRVParameterEnum.LF, calcLF.process(ps) * 1000000, unit);
 			allParameters.add(lf);
 		}
 
 		if (params.contains(HRVParameterEnum.HF) || params.contains(HRVParameterEnum.LFHF)) {
 			PowerSpectrumIntegralCalculator calcHF = new PowerSpectrumIntegralCalculator(hfLowerBound, hfUpperBound);
-			hf = new HRVParameter("HF", calcHF.process(ps) * 1000000, unit);
+			hf = new HRVParameter(HRVParameterEnum.HF, calcHF.process(ps) * 1000000, unit);
 			allParameters.add(hf);
 		}
 
 		if (params.contains(HRVParameterEnum.LFHF) && lf != null && hf != null) {
-			allParameters.add(new HRVParameter("LFHF", lf.getValue() / hf.getValue(), ""));
+			allParameters.add(new HRVParameter(HRVParameterEnum.LFHF, lf.getValue() / hf.getValue(), ""));
 		}
 
 		return allParameters;
@@ -165,9 +166,5 @@ public class HRVLibFacade {
 		default:
 			return null;
 		}
-	}
-
-	public enum HRVParameterEnum {
-		AMPLITUDEMODE, BAEVSKY, HFNU, LFNU, LFHF, LF, HF, MEAN, MODE, MXDMN, NN50, PNN50, RMSSD, SDNN, SD1, SD2, SDSD
 	}
 }

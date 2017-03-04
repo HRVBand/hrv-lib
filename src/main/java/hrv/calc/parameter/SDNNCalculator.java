@@ -9,7 +9,7 @@ public class SDNNCalculator implements HRVDataProcessor {
 	@Override
 	public HRVParameter process(RRData data) {
         StandardDeviation d = new StandardDeviation();
-        return new HRVParameter("SDNN", d.evaluate(data.getValueAxis()), data.getValueAxisUnit().toString());
+        return new HRVParameter(HRVParameterEnum.SDNN, d.evaluate(data.getValueAxis()), data.getValueAxisUnit().toString());
 	}
 
 }

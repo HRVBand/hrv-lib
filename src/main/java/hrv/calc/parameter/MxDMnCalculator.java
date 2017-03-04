@@ -17,7 +17,7 @@ public class MxDMnCalculator implements HRVDataProcessor {
 		double max = ArrayUtils.max(data.getValueAxis());
 		double min = ArrayUtils.min(data.getValueAxis());
 		
-		return new HRVParameter("MxDMn", max - min, "non");
+		return new HRVParameter(HRVParameterEnum.MXDMN, max - min, "non");
 	}
 
 }

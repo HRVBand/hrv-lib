@@ -9,7 +9,7 @@ public class SD1SD2Calculator implements HRVDataProcessor {
 		SD1Calculator sd1Calc = new SD1Calculator();
 		SD2Calculator sd2Calc = new SD2Calculator();
 
-		return new HRVParameter("SD1SD2", sd1Calc.process(data).getValue() / sd2Calc.process(data).getValue(), "non");
+		return new HRVParameter(HRVParameterEnum.SD1SD2, sd1Calc.process(data).getValue() / sd2Calc.process(data).getValue(), "non");
 	}
 
 }

@@ -28,6 +28,6 @@ public class ModeCalculator implements HRVDataProcessor {
 			}
 		}
 
-		return new HRVParameter("Mode", maxValue, "non");
+		return new HRVParameter(HRVParameterEnum.MODE, maxValue, "non");
 	}
 }

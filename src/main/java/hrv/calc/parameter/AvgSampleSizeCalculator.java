@@ -9,6 +9,7 @@ public class AvgSampleSizeCalculator implements HRVDataProcessor {
 		double maxX = data.getTimeAxis()[data.getTimeAxis().length - 1];
 		double minX = data.getTimeAxis()[0];
 		double xLength = maxX - minX;
-		return new HRVParameter("Avg. Sample Size", xLength / (data.getTimeAxis().length - 1), "1 / " + data.getTimeAxisUnit().toString());
+		return new HRVParameter(HRVParameterEnum.AVG_SAMPLE_SIZE, xLength / (data.getTimeAxis().length - 1),
+				"1 / " + data.getTimeAxisUnit().toString());
 	}
 }

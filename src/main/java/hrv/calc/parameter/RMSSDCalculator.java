@@ -13,7 +13,7 @@ public class RMSSDCalculator implements HRVDataProcessor {
 			sum += (rr[i - 1] - rr[i]) * (rr[i - 1] - rr[i]);
 		}
 
-		return new HRVParameter("RMSSD", Math.sqrt(sum / (rr.length - 1)), data.getTimeAxisUnit().toString());
+		return new HRVParameter(HRVParameterEnum.RMSSD, Math.sqrt(sum / (rr.length - 1)), data.getTimeAxisUnit().toString());
 	}
 
 }

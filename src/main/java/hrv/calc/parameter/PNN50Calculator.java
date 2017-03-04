@@ -21,6 +21,6 @@ public class PNN50Calculator implements HRVDataProcessor {
 		
 		NN50Calculator calc = new NN50Calculator();
 		
-		return new HRVParameter("PNN50", calc.process(data).getValue() / (double)(rr.length - 1) * 100, "%");
+		return new HRVParameter(HRVParameterEnum.PNN50, calc.process(data).getValue() / (double)(rr.length - 1) * 100, "%");
 	}
 }

@@ -13,7 +13,7 @@ public class SD2Calculator implements HRVDataProcessor {
 		StandardDeviation sdnnCalc = new StandardDeviation();
 		double sdnn = sdnnCalc.evaluate(data.getValueAxis());
 		double val = 2 * sdsd * sdsd - 0.5 * sdnn * sdnn;
-		return new HRVParameter("SD2", Math.sqrt(val), "non");
+		return new HRVParameter(HRVParameterEnum.SD1SD2, Math.sqrt(val), "non");
 	}
 
 }

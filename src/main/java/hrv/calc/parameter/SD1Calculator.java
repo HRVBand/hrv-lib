@@ -10,7 +10,7 @@ public class SD1Calculator implements HRVDataProcessor {
 	public HRVParameter process(RRData data) {
 		StandardDeviation sdnnCalc = new StandardDeviation();
 		double sdnn = sdnnCalc.evaluate(data.getValueAxis());
-		return new HRVParameter("SD1", Math.sqrt(0.5 * sdnn * sdnn), data.getValueAxisUnit().toString());
+		return new HRVParameter(HRVParameterEnum.SD1, Math.sqrt(0.5 * sdnn * sdnn), data.getValueAxisUnit().toString());
 	}
 
 }

@@ -2,10 +2,11 @@ package hrv.calc.continous;
 
 import hrv.RRData;
 import hrv.calc.parameter.HRVParameter;
+import hrv.calc.parameter.HRVParameterEnum;
 
-public class HRVContinousPulse extends HRVContinousParameterCalculator {
+public class HRVContinousHeartRate extends HRVContinousParameterCalculator {
 
-	public HRVContinousPulse(int size) {
+	public HRVContinousHeartRate(int size) {
 		super(size);
 	}
 
@@ -20,6 +21,6 @@ public class HRVContinousPulse extends HRVContinousParameterCalculator {
 		
 		double beatsPerSecond = sum / values.length;
 					
-		return new HRVParameter("Pulse", beatsPerSecond * 60, "Beats / Minute");
+		return new HRVParameter(HRVParameterEnum.HEART_RATE, beatsPerSecond * 60, "Beats / Minute");
 	}
 }

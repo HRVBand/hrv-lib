@@ -2,7 +2,7 @@ package hrv.calc.parameter;
 
 public class HRVParameter {
 
-	private String name;
+	private HRVParameterEnum type;
 	private String unit;
 	private double value;
 	
@@ -19,18 +19,18 @@ public class HRVParameter {
 	 * @param value Value of the parameter
 	 * @param unit Unit of the parameter
 	 */
-	public HRVParameter(String name, double value, String unit) {
-		this.name = name;
+	public HRVParameter(HRVParameterEnum type, double value, String unit) {
+		this.type = type;
 		this.value = value;
 		this.setUnit(unit);
 	}
 	
 	public String getName() {
-		return name;
+		return type.toString();
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	
+	public HRVParameterEnum getType() {
+		return type;
 	}
 
 	public double getValue() {
@@ -55,6 +55,6 @@ public class HRVParameter {
 	 */
 	@Override
 	public String toString() {
-		return name + ": " + value + " " + unit;
+		return type.toString() + ": " + value + " " + unit;
 	}
 }
