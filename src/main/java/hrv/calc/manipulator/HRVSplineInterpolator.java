@@ -2,6 +2,10 @@ package hrv.calc.manipulator;
 
 import org.apache.commons.math3.analysis.interpolation.SplineInterpolator;
 import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
+import org.apache.commons.math3.exception.DimensionMismatchException;
+import org.apache.commons.math3.exception.NonMonotonicSequenceException;
+import org.apache.commons.math3.exception.NumberIsTooSmallException;
+import org.apache.commons.math3.exception.util.LocalizedFormats;
 
 import hrv.RRData;
 
@@ -21,6 +25,7 @@ public class HRVSplineInterpolator implements HRVDataManipulator {
 
 		// Interpolate data
 		SplineInterpolator interpolator = new SplineInterpolator();
+
 		PolynomialSplineFunction interpolFunction = interpolator.interpolate(x, y);
 
 		// Calculate number of data points to be sampled for the given sampling
@@ -42,5 +47,4 @@ public class HRVSplineInterpolator implements HRVDataManipulator {
 
 		return new RRData(xInterpolated, data.getTimeAxisUnit(), yInterpolated, data.getValueAxisUnit());
 	}
-
 }

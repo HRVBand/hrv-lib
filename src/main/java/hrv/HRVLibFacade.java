@@ -12,9 +12,11 @@ import hrv.calc.manipulator.HRVSplineInterpolator;
 import hrv.calc.manipulator.HRVSubstractMeanManipulator;
 import hrv.calc.parameter.AmplitudeModeCalculator;
 import hrv.calc.parameter.BaevskyCalculator;
+import hrv.calc.parameter.HFCalculator;
 import hrv.calc.parameter.HRVDataProcessor;
 import hrv.calc.parameter.HRVParameter;
 import hrv.calc.parameter.HRVParameterEnum;
+import hrv.calc.parameter.LFCalculator;
 import hrv.calc.parameter.MeanCaclulator;
 import hrv.calc.parameter.ModeCalculator;
 import hrv.calc.parameter.MxDMnCalculator;
@@ -82,14 +84,14 @@ public class HRVLibFacade {
 		PowerSpectrum ps = getPowerSpectrum(data);
 
 		if (params.contains(HRVParameterEnum.LF) || params.contains(HRVParameterEnum.LFHF)) {
-			PowerSpectrumIntegralCalculator calcLF = new PowerSpectrumIntegralCalculator(lfLowerBound, lfUpperBound);
-			lf = new HRVParameter(HRVParameterEnum.LF, calcLF.process(ps) * 1000000, unit);
+			LFCalculator calcLF = new LFCalculator();
+			lf = calcLF.process(ps);
 			allParameters.add(lf);
 		}
 
 		if (params.contains(HRVParameterEnum.HF) || params.contains(HRVParameterEnum.LFHF)) {
-			PowerSpectrumIntegralCalculator calcHF = new PowerSpectrumIntegralCalculator(hfLowerBound, hfUpperBound);
-			hf = new HRVParameter(HRVParameterEnum.HF, calcHF.process(ps) * 1000000, unit);
+			HFCalculator calcHF = new HFCalculator();
+			hf = calcHF.process(ps);
 			allParameters.add(hf);
 		}
 

@@ -2,6 +2,8 @@ package hrv.calc.psd;
 
 import org.apache.commons.math3.analysis.integration.TrapezoidIntegrator;
 
+import hrv.calc.parameter.HRVParameter;
+import hrv.calc.parameter.HRVParameterEnum;
 import hrv.calc.parameter.HRVPowerSpectrumProcessor;
 
 public class PowerSpectrumIntegralCalculator implements HRVPowerSpectrumProcessor {
@@ -15,10 +17,10 @@ public class PowerSpectrumIntegralCalculator implements HRVPowerSpectrumProcesso
 	}
 
 	@Override
-	public double process(PowerSpectrum ps) {
+	public HRVParameter process(PowerSpectrum ps) {
 		PowerSpectrumUnivariateFunctionAdapter psAdapter = new PowerSpectrumUnivariateFunctionAdapter(ps);
 		TrapezoidIntegrator integrator = new TrapezoidIntegrator();
-		return integrator.integrate(TrapezoidIntegrator.DEFAULT_MAX_ITERATIONS_COUNT, psAdapter, lowerIntegrationLimit,
-				upperIntegrationLimit);
+		return new HRVParameter(HRVParameterEnum.NON, integrator.integrate(TrapezoidIntegrator.DEFAULT_MAX_ITERATIONS_COUNT, psAdapter, lowerIntegrationLimit,
+				upperIntegrationLimit), ps.getUnit() + "*" + ps.getUnit());
 	}
 }

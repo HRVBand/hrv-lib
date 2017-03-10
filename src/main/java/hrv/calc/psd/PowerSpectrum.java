@@ -1,9 +1,12 @@
 package hrv.calc.psd;
 
+import units.TimeUnit;
+
 public class PowerSpectrum {
 
 	private double[] power;
 	private double[] frequency;
+	private TimeUnit unit; 
 	
 	public PowerSpectrum(double[] power, double[] frequency) {
 		this.power = power;
@@ -21,6 +24,12 @@ public class PowerSpectrum {
 	}
 	public void setFrequency(double[] frequency) {
 		this.frequency = frequency;
+	}
+	public TimeUnit getUnit() {
+		return unit;
+	}
+	public void setIncomingUnit(TimeUnit unit) {
+		this.unit = unit;
 	}
 	
 	/**

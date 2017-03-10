@@ -5,5 +5,5 @@ import hrv.calc.psd.PowerSpectrum;
 @FunctionalInterface
 public interface HRVPowerSpectrumProcessor {
 
-	public double process(PowerSpectrum ps);
+	public HRVParameter process(PowerSpectrum ps);
 }

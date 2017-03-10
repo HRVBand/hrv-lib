@@ -15,12 +15,13 @@ public class HRVParameterList extends ArrayList<HRVParameter> {
 	 * no such HRV-Parameter
 	 */
 	public HRVParameter getHRVParameter(HRVParameterEnum e) {
-		List<HRVParameter> result = this.stream().filter(p -> p.getType() == e).collect(Collectors.toList());
-
-		if (result.size() > 0) {
-			return result.get(0);
+		
+		for(HRVParameter p : this) {
+			if(p.getType() == e) {
+				return p;
+			}
 		}
-
+		
 		return null;
 	}
 }

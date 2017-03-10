@@ -22,9 +22,9 @@ public class PowerSpectrumIntegralCalculatorTest {
 		PowerSpectrum ps = new PowerSpectrum(ones, onesX);
 		
 		PowerSpectrumIntegralCalculator calc = new PowerSpectrumIntegralCalculator(0, 5);
-		assertEquals(5, calc.process(ps), 0.01);
+		assertEquals(5, calc.process(ps).getValue(), 0.01);
 
 		PowerSpectrumIntegralCalculator calc2 = new PowerSpectrumIntegralCalculator(0.04, 0.15);
-		assertEquals(0.11, calc2.process(ps), 0.0001);
+		assertEquals(0.11, calc2.process(ps).getValue(), 0.0001);
 	}
 }
