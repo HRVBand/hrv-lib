@@ -2,13 +2,13 @@ package hrv.calc.manipulator;
 
 import org.apache.commons.math3.analysis.interpolation.SplineInterpolator;
 import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
-import org.apache.commons.math3.exception.DimensionMismatchException;
-import org.apache.commons.math3.exception.NonMonotonicSequenceException;
-import org.apache.commons.math3.exception.NumberIsTooSmallException;
-import org.apache.commons.math3.exception.util.LocalizedFormats;
-
 import hrv.RRData;
 
+/**
+ * Interpolates given RR-Data with a given sampling-rate. The given data must at least contain 3 data-points.
+ * @author Julian
+ *
+ */
 public class HRVSplineInterpolator implements HRVDataManipulator {
 
 	private double samplingRate;
@@ -16,7 +16,7 @@ public class HRVSplineInterpolator implements HRVDataManipulator {
 	public HRVSplineInterpolator(double samplingRate) {
 		this.samplingRate = samplingRate;
 	}
-
+	
 	@Override
 	public RRData manipulate(RRData data) {
 

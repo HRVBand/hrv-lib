@@ -13,6 +13,6 @@ public class HFCalculator implements HRVPowerSpectrumProcessor {
 
 		PowerSpectrumIntegralCalculator calcLF = new PowerSpectrumIntegralCalculator(hfLowerBound, hfUpperBound);
 		HRVParameter result = calcLF.process(ps);
-		return new HRVParameter(HRVParameterEnum.LF, result.getValue() * 1000000, result.getUnit());
+		return new HRVParameter(HRVParameterEnum.HF, result.getValue() * 1000000, result.getUnit());
 	}
 }

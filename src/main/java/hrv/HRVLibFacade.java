@@ -27,55 +27,87 @@ import hrv.calc.parameter.SD1Calculator;
 import hrv.calc.parameter.SD1SD2Calculator;
 import hrv.calc.parameter.SD2Calculator;
 import hrv.calc.parameter.SDNNCalculator;
+import hrv.calc.parameter.SDSDCalculator;
 import hrv.calc.psd.PowerSpectrum;
-import hrv.calc.psd.PowerSpectrumIntegralCalculator;
 import hrv.calc.psd.StandardPowerSpectralDensityEstimator;
 
+/**
+ * Facade for the HRV-Lib Library.
+ * 
+ * The Method {@code calculateParameters} calculates a set of parameters defined
+ * in the {@code parameters} field. By default, the following Parameters are
+ * calculated: Baevsky, HF, HFnu, LF, LFnu, NN50, PNN50, RMSSD, SD1, SD2,
+ * SD1SD2, SDNN, SDSD. Use {@code setParameters} to change the calculated
+ * HRV-Parameters
+ * 
+ * The method {@code calculatePowerspecturm} calculates the power spectrum of
+ * the given RR-Data. Before that some preprocessing of the data is done.
+ * 
+ * @author Julian
+ *
+ */
 public class HRVLibFacade {
 
 	private EnumSet<HRVParameterEnum> frequencyParams = EnumSet.of(HRVParameterEnum.LFHF, HRVParameterEnum.LF,
 			HRVParameterEnum.HF);
 
-	private double lfLowerBound = 0.04;
-	private double lfUpperBound = 0.15;
-	private double hfLowerBound = 0.15;
-	private double hfUpperBound = 0.4;
+	private Set<HRVParameterEnum> parameters = EnumSet.of(HRVParameterEnum.BAEVSKY, HRVParameterEnum.HF,
+			HRVParameterEnum.LF, HRVParameterEnum.NN50, HRVParameterEnum.PNN50, HRVParameterEnum.RMSSD,
+			HRVParameterEnum.SD1, HRVParameterEnum.SD2, HRVParameterEnum.SD1SD2, HRVParameterEnum.SDNN,
+			HRVParameterEnum.SDSD);
 
-	public void setLfLowerBound(double value) {
-		this.lfLowerBound = value;
+	private RRData data;
+	private HRVMultiDataManipulator frequencyDataManipulator = new HRVMultiDataManipulator();
+
+	public HRVLibFacade(RRData data) {
+		this.data = data;
+
+		frequencyDataManipulator.addManipulator(new HRVCleanRRDataByLimits());
+		frequencyDataManipulator.addManipulator(new HRVSplineInterpolator(4));
+		frequencyDataManipulator.addManipulator(new HRVCutToPowerTwoDataManipulator());
+		frequencyDataManipulator.addManipulator(new HRVSubstractMeanManipulator());
 	}
 
-	public void setLfUpperBound(double value) {
-		this.lfUpperBound = value;
+	public void setParameters(Set<HRVParameterEnum> parameters) {
+		this.parameters = parameters;
 	}
 
-	public void setHfLowerBound(double value) {
-		this.hfLowerBound = value;
-	}
-
-	public void setHfUpperBound(double value) {
-		this.hfUpperBound = value;
-	}
-
-	public List<HRVParameter> calculate(Set<HRVParameterEnum> parameters, RRData data) {
+	/**
+	 * Calculates the HRV-Parameters specified in {@code parameters} for the
+	 * given RR-Data.
+	 * 
+	 * @return List of HRV-Parameters
+	 */
+	public List<HRVParameter> calculateParameters() {
 
 		List<HRVParameter> allParams = new ArrayList<>();
-		List<HRVDataProcessor> allCalculators = getAllHRVDataProcessors(parameters);
+		List<HRVDataProcessor> allCalculators = getAllHRVDataProcessors();
 
 		for (HRVDataProcessor p : allCalculators) {
 			allParams.add(p.process(data));
 		}
 
 		if (containsOne(frequencyParams, parameters)) {
-			allParams.addAll(calculateFrequencyParams(parameters, data));
+			allParams.addAll(calculateFrequencyParams());
 		}
 
 		return allParams;
 	}
 
-	private List<HRVParameter> calculateFrequencyParams(Set<HRVParameterEnum> params, RRData data) {
+	/**
+	 * Calculates the power spectrum of the given data.
+	 * 
+	 * @param data
+	 *            Data to calculate the power spectrum from
+	 * @return power spectrum
+	 */
+	public PowerSpectrum getPowerSpectrum(RRData data) {
+		RRData manipulatedData = frequencyDataManipulator.manipulate(data);
+		StandardPowerSpectralDensityEstimator estimator = new StandardPowerSpectralDensityEstimator();
+		return estimator.calculateEstimate(manipulatedData);
+	}
 
-		String unit = data.getTimeAxisUnit().toString() + "*" + data.getTimeAxisUnit().toString();
+	private List<HRVParameter> calculateFrequencyParams() {
 
 		List<HRVParameter> allParameters = new ArrayList<>();
 
@@ -83,39 +115,26 @@ public class HRVLibFacade {
 		HRVParameter hf = null;
 		PowerSpectrum ps = getPowerSpectrum(data);
 
-		if (params.contains(HRVParameterEnum.LF) || params.contains(HRVParameterEnum.LFHF)) {
+		if (parameters.contains(HRVParameterEnum.LF) || parameters.contains(HRVParameterEnum.LFHF)) {
 			LFCalculator calcLF = new LFCalculator();
 			lf = calcLF.process(ps);
 			allParameters.add(lf);
 		}
 
-		if (params.contains(HRVParameterEnum.HF) || params.contains(HRVParameterEnum.LFHF)) {
+		if (parameters.contains(HRVParameterEnum.HF) || parameters.contains(HRVParameterEnum.LFHF)) {
 			HFCalculator calcHF = new HFCalculator();
 			hf = calcHF.process(ps);
 			allParameters.add(hf);
 		}
 
-		if (params.contains(HRVParameterEnum.LFHF) && lf != null && hf != null) {
+		if (parameters.contains(HRVParameterEnum.LFHF) && lf != null && hf != null) {
 			allParameters.add(new HRVParameter(HRVParameterEnum.LFHF, lf.getValue() / hf.getValue(), ""));
 		}
 
 		return allParameters;
 	}
 
-	public PowerSpectrum getPowerSpectrum(RRData data) {
-
-		HRVMultiDataManipulator mani = new HRVMultiDataManipulator();
-		mani.addManipulator(new HRVCleanRRDataByLimits());
-		mani.addManipulator(new HRVSplineInterpolator(4));
-		mani.addManipulator(new HRVCutToPowerTwoDataManipulator());
-		mani.addManipulator(new HRVSubstractMeanManipulator());
-		RRData manipulatedData = mani.manipulate(data);
-
-		StandardPowerSpectralDensityEstimator estimator = new StandardPowerSpectralDensityEstimator();
-		return estimator.calculateEstimate(manipulatedData);
-	}
-
-	private <T extends Enum<T>> boolean containsOne(Set<T> setToTest, Set<T> set) {
+	private static <T extends Enum<T>> boolean containsOne(Set<T> setToTest, Set<T> set) {
 
 		for (Object e : set) {
 			if (setToTest.contains(e)) {
@@ -126,10 +145,10 @@ public class HRVLibFacade {
 		return false;
 	}
 
-	private List<HRVDataProcessor> getAllHRVDataProcessors(Set<HRVParameterEnum> params) {
+	private List<HRVDataProcessor> getAllHRVDataProcessors() {
 		List<HRVDataProcessor> processors = new ArrayList<>();
 
-		for (HRVParameterEnum param : params) {
+		for (HRVParameterEnum param : parameters) {
 			HRVDataProcessor processor = getHRVDataProcessor(param);
 			if (processor != null) {
 				processors.add(processor);
@@ -164,6 +183,8 @@ public class HRVLibFacade {
 		case SD2:
 			return new SD2Calculator();
 		case SDSD:
+			return new SDSDCalculator();
+		case SD1SD2: 
 			return new SD1SD2Calculator();
 		default:
 			return null;
