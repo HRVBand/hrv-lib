@@ -73,6 +73,14 @@ public class HRVLibFacade {
 	}
 
 	/**
+	 * Returns whether the RRData is valid.
+	 * @return whether the RRData is valid.
+	 */
+	public boolean validData() {
+		return data.getValueAxis().length > 2;
+	}
+	
+	/**
 	 * Calculates the HRV-Parameters specified in {@code parameters} for the
 	 * given RR-Data.
 	 * 
