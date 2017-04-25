@@ -1,5 +1,6 @@
 package hrv.calc.parameter;
 
+import hrv.RRData;
 import hrv.calc.psd.PowerSpectrum;
 import hrv.calc.psd.PowerSpectrumIntegralCalculator;
 

@@ -16,4 +16,8 @@ public class RMSSDCalculator implements HRVDataProcessor {
 		return new HRVParameter(HRVParameterEnum.RMSSD, Math.sqrt(sum / (rr.length - 1)), data.getTimeAxisUnit().toString());
 	}
 
+	@Override
+	public boolean validData(RRData data) {
+		return data.getValueAxis().length > 1;
+	}
 }

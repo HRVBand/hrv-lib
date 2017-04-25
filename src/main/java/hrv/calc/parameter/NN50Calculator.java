@@ -31,4 +31,8 @@ public class NN50Calculator implements HRVDataProcessor {
 		return new HRVParameter(HRVParameterEnum.NN50, nn50, "non");
 	}
 
+	@Override
+	public boolean validData(RRData data) {
+		return true;
+	}
 }

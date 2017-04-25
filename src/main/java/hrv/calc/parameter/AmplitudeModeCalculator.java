@@ -17,4 +17,8 @@ public class AmplitudeModeCalculator implements HRVDataProcessor {
 		return new HRVParameter(HRVParameterEnum.AMPLITUDEMODE, counter / (double) data.getValueAxis().length, "non");
 	}
 
+	@Override
+	public boolean validData(RRData data) {
+		return data.getValueAxis().length > 0;
+	}
 }

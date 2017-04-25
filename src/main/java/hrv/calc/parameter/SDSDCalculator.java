@@ -18,4 +18,9 @@ public class SDSDCalculator implements HRVDataProcessor {
 		StandardDeviation d = new StandardDeviation();		
 		return new HRVParameter(HRVParameterEnum.SDSD,d.evaluate(rrdiff), "non");
 	}
+
+	@Override
+	public boolean validData(RRData data) {
+		return data.getValueAxis().length > 0;
+	}
 }

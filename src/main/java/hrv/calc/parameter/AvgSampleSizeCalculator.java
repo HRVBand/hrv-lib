@@ -12,4 +12,10 @@ public class AvgSampleSizeCalculator implements HRVDataProcessor {
 		return new HRVParameter(HRVParameterEnum.AVG_SAMPLE_SIZE, xLength / (data.getTimeAxis().length - 1),
 				"1 / " + data.getTimeAxisUnit().toString());
 	}
+	
+
+	@Override
+	public boolean validData(RRData data) {
+		return data.getValueAxis().length > 0;
+	}
 }

@@ -13,4 +13,8 @@ public class SD1Calculator implements HRVDataProcessor {
 		return new HRVParameter(HRVParameterEnum.SD1, Math.sqrt(0.5 * sdnn * sdnn), data.getValueAxisUnit().toString());
 	}
 
+	@Override
+	public boolean validData(RRData data) {
+		return data.getValueAxis().length > 1;
+	}
 }

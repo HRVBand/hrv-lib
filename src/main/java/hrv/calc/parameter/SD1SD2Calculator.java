@@ -12,4 +12,9 @@ public class SD1SD2Calculator implements HRVDataProcessor {
 		return new HRVParameter(HRVParameterEnum.SD1SD2, sd1Calc.process(data).getValue() / sd2Calc.process(data).getValue(), "non");
 	}
 
+
+	@Override
+	public boolean validData(RRData data) {
+		return data.getValueAxis().length > 1;
+	}
 }

@@ -12,4 +12,8 @@ public class MeanCaclulator implements HRVDataProcessor {
 		return new HRVParameter(HRVParameterEnum.MEAN, m.evaluate(data.getValueAxis()), data.getValueAxisUnit().toString());
 	}
 
+	@Override
+	public boolean validData(RRData data) {
+		return data.getValueAxis().length > 0;
+	}
 }

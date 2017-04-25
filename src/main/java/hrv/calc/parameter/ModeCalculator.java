@@ -30,4 +30,9 @@ public class ModeCalculator implements HRVDataProcessor {
 
 		return new HRVParameter(HRVParameterEnum.MODE, maxValue, "non");
 	}
+	
+	@Override
+	public boolean validData(RRData data) {
+		return true;
+	}
 }

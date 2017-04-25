@@ -25,4 +25,10 @@ public class BaevskyCalculator implements HRVDataProcessor {
 		
 		return new HRVParameter(HRVParameterEnum.BAEVSKY, amplitudeMode / (2 * mode * mxdmn), "non");
 	}
+	
+
+	@Override
+	public boolean validData(RRData data) {
+		return data.getValueAxis().length > 0;
+	}
 }

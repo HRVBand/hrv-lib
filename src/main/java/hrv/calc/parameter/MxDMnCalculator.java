@@ -20,4 +20,8 @@ public class MxDMnCalculator implements HRVDataProcessor {
 		return new HRVParameter(HRVParameterEnum.MXDMN, max - min, "non");
 	}
 
+	@Override
+	public boolean validData(RRData data) {
+		return data.getValueAxis().length > 0;
+	}	
 }
