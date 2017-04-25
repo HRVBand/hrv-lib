@@ -48,4 +48,9 @@ public abstract class HRVContinousParameterCalculator implements HRVRRIntervalLi
 			listener.parameterChanged(param);
 		}
 	}
+	
+	@Override
+	public boolean validData(RRData data) {
+		return true;
+	}
 }
