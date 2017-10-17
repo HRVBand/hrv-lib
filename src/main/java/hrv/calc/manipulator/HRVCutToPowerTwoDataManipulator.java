@@ -4,7 +4,7 @@ import common.MathUtils;
 import hrv.RRData;
 
 /**
- * Cuts the given data down, so that the resulting lenght of the data is a power of two.
+ * Cuts the given data down, so that the resulting length of the data is a power of two.
  * 
  * @author Julian
  *
