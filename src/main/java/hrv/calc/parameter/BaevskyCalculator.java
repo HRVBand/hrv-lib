@@ -1,6 +1,7 @@
 package hrv.calc.parameter;
 
 import hrv.RRData;
+import hrv.calc.Histogram;
 
 /**
  * Calculates the Baevsky Stress Index corresponding to http://rainer-bartosch.de/HRV/Fachseminar_IMD_HRV.pdf
@@ -13,17 +14,10 @@ public class BaevskyCalculator implements HRVDataProcessor {
 
 	@Override
 	public HRVParameter process(RRData rrinterval) {
+			
+		Histogram hist = new Histogram(rrinterval.getValueAxis());
 		
-		ModeCalculator modeCalc = new ModeCalculator();		
-		double mode = modeCalc.process(rrinterval).getValue();
-
-		AmplitudeModeCalculator ampModeCalc = new AmplitudeModeCalculator();
-		double amplitudeMode = ampModeCalc.process(rrinterval).getValue();
-		
-		MxDMnCalculator mxdmnCalc = new MxDMnCalculator();
-		double mxdmn = mxdmnCalc.process(rrinterval).getValue();
-		
-		return new HRVParameter(HRVParameterEnum.BAEVSKY, amplitudeMode / (2 * mode * mxdmn), "non");
+		return new HRVParameter(HRVParameterEnum.BAEVSKY, hist.getAmplitudeMode() / (2 * hist.getMode() * hist.getRange()), "non");
 	}
 	
 
