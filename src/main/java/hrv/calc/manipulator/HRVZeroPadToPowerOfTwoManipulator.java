@@ -6,7 +6,7 @@ import hrv.RRData;
 import hrv.calc.parameter.AvgSampleSizeCalculator;
 
 /**
- * Appends Zeores to given RRData until the size of RRData is a power of two.
+ * Appends zeroes to given RRData until the size of RRData is a power of two.
  * 
  * @author Julian
  *

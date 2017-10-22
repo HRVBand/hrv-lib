@@ -24,4 +24,13 @@ public class MathUtilsTest {
 		assertFalse(MathUtils.almostEqual(0.0, 0.1, 0.01));
 		assertTrue(MathUtils.almostEqual(0.0, 0.01, 0.1));
 	}
+	
+	@Test
+	public void testAvgsArray() {
+		double[] testData = new double[] {1,2,3,4,5,6,7,8,9,10};
+		
+		double[] result = MathUtils.calculateAverageArray(testData, 2);
+		
+		assertArrayEquals(new double[] {2.5, 8.0 / 3.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0,  25.0 / 3.0, 17.0 / 2.0}, result, Double.MIN_VALUE);
+	}
 }

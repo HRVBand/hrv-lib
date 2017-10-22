@@ -53,4 +53,29 @@ public class MathUtils {
 	public static boolean almostEqual(double a, double b, double eps){
 	    return Math.abs(a-b)<eps;
 	}
+	
+	public static double[] calculateAverageArray(double[] values, int range) {
+		double[] avgs = new double[values.length];
+		for(int i = 0; i < values.length; i++){
+			
+			int leftStart = i < range ? -i : -range;
+			int count = 0;
+			for(int j = leftStart; j < 0; j++) {
+				avgs[i] += values[i + j];
+				count++;
+			}
+			
+			int rigthEnd = i + (range + 1) > values.length ? (values.length - i) : range + 1;
+			for(int j = 1; j < rigthEnd; j++) {
+				avgs[i] += values[i + j];
+				count++;
+			}
+			
+			if(count != 0) {
+				avgs[i] = avgs[i] / count;
+			} 			 
+		}			
+		
+		return avgs;
+	}
 }
