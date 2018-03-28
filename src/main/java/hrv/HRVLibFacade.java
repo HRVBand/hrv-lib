@@ -7,6 +7,7 @@ import java.util.Set;
 
 import hrv.calc.manipulator.HRVCleanRRDataByLimits;
 import hrv.calc.manipulator.HRVCutToPowerTwoDataManipulator;
+import hrv.calc.manipulator.HRVDataManipulator;
 import hrv.calc.manipulator.HRVMultiDataManipulator;
 import hrv.calc.manipulator.HRVSplineInterpolator;
 import hrv.calc.manipulator.HRVSubstractMeanManipulator;
@@ -58,11 +59,11 @@ public class HRVLibFacade {
 
 	private RRData data;
 	private HRVMultiDataManipulator frequencyDataManipulator = new HRVMultiDataManipulator();
+	private HRVMultiDataManipulator filters = new HRVMultiDataManipulator();
 
 	public HRVLibFacade(RRData data) {
 		this.data = data;
 
-		frequencyDataManipulator.addManipulator(new HRVCleanRRDataByLimits());
 		frequencyDataManipulator.addManipulator(new HRVSplineInterpolator(4));
 		frequencyDataManipulator.addManipulator(new HRVCutToPowerTwoDataManipulator());
 		frequencyDataManipulator.addManipulator(new HRVSubstractMeanManipulator());
@@ -70,6 +71,11 @@ public class HRVLibFacade {
 
 	public void setParameters(Set<HRVParameterEnum> parameters) {
 		this.parameters = parameters;
+	}
+	
+	
+	public void addDataFilter(HRVDataManipulator filter) {
+		this.filters.addManipulator(filter);
 	}
 
 	/**
@@ -88,15 +94,17 @@ public class HRVLibFacade {
 	 */
 	public List<HRVParameter> calculateParameters() {
 
+		RRData filteredData = filters.manipulate(data);
+		
 		List<HRVParameter> allParams = new ArrayList<>();
 		List<HRVDataProcessor> allCalculators = getAllHRVDataProcessors();
 
 		for (HRVDataProcessor p : allCalculators) {
-			allParams.add(p.process(data));
+			allParams.add(p.process(filteredData));
 		}
 
 		if (containsOne(frequencyParams, parameters)) {
-			allParams.addAll(calculateFrequencyParams());
+			allParams.addAll(calculateFrequencyParams(filteredData));
 		}
 
 		return allParams;
@@ -115,7 +123,7 @@ public class HRVLibFacade {
 		return estimator.calculateEstimate(manipulatedData);
 	}
 
-	private List<HRVParameter> calculateFrequencyParams() {
+	private List<HRVParameter> calculateFrequencyParams(RRData data) {
 
 		List<HRVParameter> allParameters = new ArrayList<>();
 

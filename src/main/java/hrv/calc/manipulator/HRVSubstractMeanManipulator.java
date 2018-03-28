@@ -6,6 +6,8 @@ import hrv.RRData;
 
 public class HRVSubstractMeanManipulator implements HRVDataManipulator {
 
+	
+	
 	@Override
 	public RRData manipulate(RRData data) {
 		

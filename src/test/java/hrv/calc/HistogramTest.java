@@ -45,6 +45,11 @@ public class HistogramTest {
 
 		histo3Bin.setBinSize(3.0);		
 		assertEquals(3, histo3Bin.getBins().length);
+		
+		Histogram histo1Bin = new Histogram(new double[] {1.0,1.0,1.0,1.0});
+		histo1Bin.setBinSize(0.05);
+		assertEquals(1, histo1Bin.getBins().length);
+		
 	}
 
 	@Test

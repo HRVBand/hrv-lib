@@ -12,7 +12,7 @@ import units.TimeUnitConverter;
 public class RRData {
 
 	private TimeUnit rrValueAxisUnit;
-	private TimeUnit rrTimeAxisUnit;
+	private /*@ spec_public */ TimeUnit rrTimeAxisUnit; 
 
 	private double[] rrValuesAxis;
 	private double[] rrTimeAxis;
@@ -63,6 +63,8 @@ public class RRData {
 		return rrValueAxisUnit;
 	}
 	
+	//@ also
+	//@ ensures \result == rrTimeAxisUnit;
 	public TimeUnit getTimeAxisUnit() {
 		return rrTimeAxisUnit;
 	}

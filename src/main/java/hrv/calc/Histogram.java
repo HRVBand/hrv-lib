@@ -8,6 +8,8 @@ public class Histogram {
 	private double max;
 	private double min;
 	
+	//@ private invariant max >= min;
+	
 	/**
 	 * Creates a new histogram from the given observations
 	 * @param observations Observations with more than 1 entry
@@ -43,10 +45,10 @@ public class Histogram {
 		}
 	}
 	
-	/**
-	 * Returns the range of the given observation data.
-	 * @return the range of the given observation data.
-	 */
+	/** 
+	* Returns the range of the given observation data.
+	* @return the range of the given observation data.
+	*/
 	public double getRange()
 	{
 		return max - min;
@@ -64,7 +66,8 @@ public class Histogram {
 		if(binSize <= 0)
 			throw new IllegalArgumentException("Bin-Size has to be > 0");
 		
-		numberOfBins = (int) (getRange() / binSize);
+		int tempBinNum = (int) (getRange() / binSize); 
+		numberOfBins = tempBinNum == 0 ? 1 : tempBinNum;
 		createBins();
 	}
 	

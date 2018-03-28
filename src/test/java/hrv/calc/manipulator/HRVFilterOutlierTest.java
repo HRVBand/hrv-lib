@@ -37,15 +37,4 @@ public class HRVFilterOutlierTest {
 		
 		assertArrayEquals(new double[] {1,2,3,4,6,7,8,9}, result4.getValueAxis(), Double.MIN_VALUE);
 	}
-
-	@Test
-	public void testSetTestRange() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetStrength() {
-		fail("Not yet implemented");
-	}
-
 }
