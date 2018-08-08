@@ -18,6 +18,7 @@ import hrv.calc.parameter.HRVDataProcessor;
 import hrv.calc.parameter.HRVParameter;
 import hrv.calc.parameter.HRVParameterEnum;
 import hrv.calc.parameter.LFCalculator;
+import hrv.calc.parameter.VLFCalculator;
 import hrv.calc.parameter.MeanCaclulator;
 import hrv.calc.parameter.ModeCalculator;
 import hrv.calc.parameter.MxDMnCalculator;
@@ -50,12 +51,12 @@ import hrv.calc.psd.StandardPowerSpectralDensityEstimator;
 public class HRVLibFacade {
 
 	private EnumSet<HRVParameterEnum> frequencyParams = EnumSet.of(HRVParameterEnum.LFHF, HRVParameterEnum.LF,
-			HRVParameterEnum.HF);
+			HRVParameterEnum.HF, HRVParameterEnum.VLF);
 
 	private Set<HRVParameterEnum> parameters = EnumSet.of(HRVParameterEnum.BAEVSKY, HRVParameterEnum.HF,
 			HRVParameterEnum.LF, HRVParameterEnum.NN50, HRVParameterEnum.PNN50, HRVParameterEnum.RMSSD,
 			HRVParameterEnum.SD1, HRVParameterEnum.SD2, HRVParameterEnum.SD1SD2, HRVParameterEnum.SDNN,
-			HRVParameterEnum.SDSD);
+			HRVParameterEnum.SDSD, HRVParameterEnum.VLF);
 
 	private RRData data;
 	private HRVMultiDataManipulator frequencyDataManipulator = new HRVMultiDataManipulator();
@@ -141,6 +142,12 @@ public class HRVLibFacade {
 			HFCalculator calcHF = new HFCalculator();
 			hf = calcHF.process(ps);
 			allParameters.add(hf);
+		}
+
+		if (parameters.contains(HRVParameterEnum.VLF)) {
+			VLFCalculator calcVLF = new VLFCalculator();
+			vlf = calcVLF.process(ps);
+			allParameters.add(vlf);
 		}
 
 		if (parameters.contains(HRVParameterEnum.LFHF) && lf != null && hf != null) {
