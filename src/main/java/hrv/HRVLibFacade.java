@@ -38,7 +38,7 @@ import hrv.calc.psd.StandardPowerSpectralDensityEstimator;
  * 
  * The Method {@code calculateParameters} calculates a set of parameters defined
  * in the {@code parameters} field. By default, the following Parameters are
- * calculated: Baevsky, HF, HFnu, LF, LFnu, NN50, PNN50, RMSSD, SD1, SD2,
+ * calculated: Baevsky, HF, HFnu, LF, LFnu, VLF, NN50, PNN50, RMSSD, SD1, SD2,
  * SD1SD2, SDNN, SDSD. Use {@code setParameters} to change the calculated
  * HRV-Parameters
  * 
@@ -130,6 +130,7 @@ public class HRVLibFacade {
 
 		HRVParameter lf = null;
 		HRVParameter hf = null;
+		HRVParameter vlf = null;
 		PowerSpectrum ps = getPowerSpectrum(data);
 
 		if (parameters.contains(HRVParameterEnum.LF) || parameters.contains(HRVParameterEnum.LFHF)) {
