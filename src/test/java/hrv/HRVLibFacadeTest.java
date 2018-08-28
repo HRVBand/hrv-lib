@@ -26,7 +26,8 @@ public class HRVLibFacadeTest {
 	
 	@Test
 	public void testParamCalculation() {
-		RRData data = RRData.createFromRRInterval(new double[] {1,1,1,1,1,1,1,1}, TimeUnit.SECOND);
+		RRData data = RRData.createFromRRInterval(
+				new double[] {1,1,1,1,1,1,1,1}, TimeUnit.SECOND);
 		
 		HRVLibFacade facade = new HRVLibFacade(data);
 		facade.setParameters(EnumSet.of(HRVParameterEnum.HF));
