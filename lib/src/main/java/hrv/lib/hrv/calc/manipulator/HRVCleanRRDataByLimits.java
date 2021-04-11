@@ -8,8 +8,8 @@ import java.util.List;
 
 public class HRVCleanRRDataByLimits implements HRVDataManipulator {
 
-	private double lowerRRLimit = 0.2; // = 300 beats per minute
-	private double upperRRLimit = 3.0; // = 20 beats per minute
+	private static final double LOWER_RR_LIMIT = 0.2; // = 300 beats per minute
+	private static final double UPPER_RR_LIMIT = 3.0; // = 20 beats per minute
 
 	@Override
 	public RRData manipulate(RRData data) {
@@ -27,7 +27,7 @@ public class HRVCleanRRDataByLimits implements HRVDataManipulator {
 		List<Integer> indicesToRemove = new ArrayList<>();
 
 		for (int i = 0; i < data.length; i++) {
-			if (data[i] < lowerRRLimit || data[i] > upperRRLimit) {
+			if (data[i] < LOWER_RR_LIMIT || data[i] > UPPER_RR_LIMIT) {
 				indicesToRemove.add(i);
 			}
 		}
@@ -43,7 +43,6 @@ public class HRVCleanRRDataByLimits implements HRVDataManipulator {
 				newData.add(data[i]);
 			}
 		}
-
 		return ArrayUtils.toPrimitive(newData, 0.0);
 	}
 }

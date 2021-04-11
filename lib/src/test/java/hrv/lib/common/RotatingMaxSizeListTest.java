@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RotatingMaxSizeListTest {
+class RotatingMaxSizeListTest {
 
 	@Test
-	public void testRotation() {
-		RotatingMaxSizeList<Double> list = new RotatingMaxSizeList<Double>(new Double[4]);
+	void testRotation() {
+		RotatingMaxSizeList<Double> list = new RotatingMaxSizeList<>(new Double[4]);
 		
 		list.add(5.0);
 		assertEquals(5.0, list.get(0), 0.00001);
@@ -23,14 +23,14 @@ public class RotatingMaxSizeListTest {
 	}
 	
 	@Test
-	public void testSize() {
-		RotatingMaxSizeList<Double> list = new RotatingMaxSizeList<Double>(new Double[4]);
+	void testSize() {
+		RotatingMaxSizeList<Double> list = new RotatingMaxSizeList<>(new Double[4]);
 		assertEquals(4, list.size());
 	}
 	
 	@Test
-	public void testFillReate() {
-		RotatingMaxSizeList<Double> list = new RotatingMaxSizeList<Double>(new Double[4]);
+	void testFillRate() {
+		RotatingMaxSizeList<Double> list = new RotatingMaxSizeList<>(new Double[4]);
 		assertEquals(0, list.fillRate());
 		list.add(5.0);
 		assertEquals(1, list.fillRate());

@@ -10,5 +10,5 @@ public interface HRVDataManipulator {
 	 * @param data data to manipulate.
 	 * @return Manipulated data.
 	 */
-	public RRData manipulate(RRData data);
+	RRData manipulate(RRData data);
 }

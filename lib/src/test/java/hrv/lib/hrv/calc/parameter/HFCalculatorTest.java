@@ -6,14 +6,14 @@ import hrv.lib.hrv.calc.psd.StandardPowerSpectralDensityEstimator;
 import hrv.lib.units.TimeUnit;
 import org.junit.jupiter.api.Test;
 
-public class HFCalculatorTest {
+import java.util.Arrays;
+
+class HFCalculatorTest {
 
 	@Test
-	public void testCalc() {
+	void testCalc() {
 		double[] data = new double[16];
-		for(int i = 0; i < data.length; i++) {
-			data[i] = 1;
-		}
+		Arrays.fill(data, 1);
 		
 		StandardPowerSpectralDensityEstimator est = new StandardPowerSpectralDensityEstimator();
 		PowerSpectrum ps = est.calculateEstimate(RRData.createFromRRInterval(data, TimeUnit.SECOND));

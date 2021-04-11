@@ -6,7 +6,7 @@ import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
 
 public class PowerSpectrumUnivariateFunctionAdapter implements UnivariateFunction {
 
-	private PolynomialSplineFunction interpolFunction;
+	private final PolynomialSplineFunction interpolFunction;
 	
 	public PowerSpectrumUnivariateFunctionAdapter(PowerSpectrum ps) {
 		

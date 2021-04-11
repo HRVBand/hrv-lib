@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SDSDCalculatorTest {
+class SDSDCalculatorTest {
 
 	@Test
-	public void testForZeroCalculation() {
+	void testForZeroCalculation() {
 		double[] valueData = new double[] { 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0 };
 		RRData data = new RRData(null, TimeUnit.SECOND, valueData, TimeUnit.SECOND);
 		
@@ -18,7 +18,7 @@ public class SDSDCalculatorTest {
 	}
 	
 	@Test
-	public void testWikiSampleData() {
+	void testWikiSampleData() {
 		//Vales needed after subtraction: 10.0, 9.0, 13.0, 15.0, 16.0
 		//Sample Source: https://de.wikipedia.org/wiki/Empirische_Standardabweichung
 		double[] valueData = new double[] { 100, 90, 81, 68, 53, 37 };

@@ -45,7 +45,7 @@ public class ArrayUtils {
 		double[] newArray = new double[array.length];
 
 		for (int i = 0; i < array.length; i++) {
-			newArray[i] = array[i] == null ? defaultValue : array[i].doubleValue();
+			newArray[i] = array[i] == null ? defaultValue : array[i];
 		}
 
 		return newArray;
@@ -63,9 +63,9 @@ public class ArrayUtils {
 	public static double[] toPrimitiveIgnoreNull(Double[] array) {
 		ArrayList<Double> newArray = new ArrayList<>();
 
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] != null) {
-				newArray.add(array[i]);
+		for (Double aDouble : array) {
+			if (aDouble != null) {
+				newArray.add(aDouble);
 			}
 		}
 
@@ -127,7 +127,7 @@ public class ArrayUtils {
 	 * 
 	 * @param data
 	 *            Data to be add zeroes to
-	 * @param untilIndex
+	 * @param newZeroes
 	 *            Number of zeroes to add (has to be positive).
 	 * @return new array with trailing zeroes
 	 */
@@ -138,9 +138,7 @@ public class ArrayUtils {
 		double[] newData = new double[data.length + newZeroes];
 
 		// Transfer existing data
-		for (int i = 0; i < data.length; i++) {
-			newData[i] = data[i];
-		}
+		System.arraycopy(data, 0, newData, 0, data.length);
 
 		// Fill remaining values with zero and make x-Axis continuous
 		for (int i = data.length; i < data.length + newZeroes; i++) {
@@ -151,7 +149,7 @@ public class ArrayUtils {
 	}
 
 	/**
-	 * Continous the given data by increments of the last element in the data.
+	 * Continuous the given data by increments of the last element in the data.
 	 * The value of the increment is defined by {@code increment}. The number of
 	 * increments is given by {@code numOfNewIncrements}. The length of the new
 	 * data array is {@code data.length + numOfNewIncrements}
@@ -172,9 +170,7 @@ public class ArrayUtils {
 		double[] newData = new double[data.length + numOfNewIncrements];
 
 		// Transfer existing data
-		for (int i = 0; i < data.length; i++) {
-			newData[i] = data[i];
-		}
+		System.arraycopy(data, 0, newData, 0, data.length);
 
 		// Fill remaining values with zero and make x-Axis continuous
 		double firstOldElement = data.length == 0 ? 0 : data[data.length - 1];

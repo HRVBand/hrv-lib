@@ -3,13 +3,11 @@ package hrv.lib.hrv.calc;
 public class Histogram {
 
 	private int numberOfBins;
-	private double[] observations;
+	private final double[] observations;
 	private int[] bins;
 	private double max;
 	private double min;
-	
-	//@ private invariant max >= min;
-	
+
 	/**
 	 * Creates a new histogram from the given observations
 	 * @param observations Observations with more than 1 entry
@@ -72,19 +70,19 @@ public class Histogram {
 	}
 	
 	private void createBins() {
-		bins = new int[numberOfBins];		
-		
-		for(int i = 0; i < observations.length; i++) {
-			
+		bins = new int[numberOfBins];
+
+		for (double observation : observations) {
+
 			//The max value always falls into a bin that is non existent and therefore belongs to
 			//the last available bin.
-			if(max - observations[i] < Double.MIN_VALUE) {
+			if (max - observation < Double.MIN_VALUE) {
 				bins[bins.length - 1]++;
 				continue;
 			}
-			
+
 			//Calculate bin
-			int bin = (int)((observations[i] - min) / getBinSize());			
+			int bin = (int) ((observation - min) / getBinSize());
 			bins[bin]++;
 		}
 	}

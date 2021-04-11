@@ -1,16 +1,15 @@
-package hrv.calc.parameter;
+package hrv.lib.hrv.calc.parameter;
 
 import hrv.lib.hrv.RRData;
-import hrv.lib.hrv.calc.parameter.AvgSampleSizeCalculator;
 import hrv.lib.units.TimeUnit;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AvgSampleSizeCalculatorTest {
+class AvgSampleSizeCalculatorTest {
 
 	@Test
-	public void testSampleSizeCalculation() {
+	void testSampleSizeCalculation() {
 		
 		double[] timeData1 = new double[] { 1.0, 2.0, 3.0, 4.0 };
 		double[] timeData2 = new double[] { 0.0, 2.0, 2.5, 4.0 };

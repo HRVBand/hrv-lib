@@ -3,10 +3,8 @@ package hrv.lib.hrv.calc.manipulator;
 import hrv.lib.hrv.RRData;
 import org.apache.commons.math3.stat.descriptive.moment.Mean;
 
-public class HRVSubstractMeanManipulator implements HRVDataManipulator {
+public class HRVSubtractMeanManipulator implements HRVDataManipulator {
 
-	
-	
 	@Override
 	public RRData manipulate(RRData data) {
 		

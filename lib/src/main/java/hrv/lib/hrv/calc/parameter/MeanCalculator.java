@@ -3,7 +3,7 @@ package hrv.lib.hrv.calc.parameter;
 import hrv.lib.hrv.RRData;
 import org.apache.commons.math3.stat.descriptive.moment.Mean;
 
-public class MeanCaclulator implements HRVDataProcessor {
+public class MeanCalculator implements HRVDataProcessor {
 
 	@Override
 	public HRVParameter process(RRData data) {

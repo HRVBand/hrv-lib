@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class WindowTests {
+class WindowTests {
 
 	@Test
-	public void testNoWindow() {
+	void testNoWindow() {
 		double[] time1 = new double[] { 0.0, 1.0, 2.0, 4.0 };
 		double[] values1 = new double[] { 1.0, 1.1, 1.2, 0.9 };
 		RRData data = new RRData(time1, TimeUnit.SECOND, values1, TimeUnit.SECOND);
@@ -24,7 +24,7 @@ public class WindowTests {
 	}
 	
 	@Test
-	public void testHammingWindow() {
+	void testHammingWindow() {
 
 		double[] time1 = new double[] { 0.0, 1.0, 2.0, 4.0 };
 		double[] values1 = new double[] { 1.0, 1.0, 1.0, 1.0 };

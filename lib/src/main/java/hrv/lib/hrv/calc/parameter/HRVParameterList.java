@@ -8,7 +8,7 @@ public class HRVParameterList extends ArrayList<HRVParameter> {
 	 * Returns the first found HRV-Parameter of the given type, null if there is
 	 * no such HRV-Parameter
 	 * 
-	 * @param e
+	 * @param e hrv parameter enum to return from the list
 	 * @return the first found HRV-Parameter of the given type, null if there is
 	 * no such HRV-Parameter
 	 */

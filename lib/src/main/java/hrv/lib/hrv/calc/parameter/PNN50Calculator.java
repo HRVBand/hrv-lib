@@ -12,7 +12,6 @@ public class PNN50Calculator implements HRVDataProcessor {
 
 	/**
 	 * Calculates the pNN50-HRV-Parameter in %, from the given RR-interval-data.
-	 * @param rr RR-interval-data in seconds.
 	 * @return calculated pNN50 parameter.
 	 */
 	@Override

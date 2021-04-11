@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RMSSDCalculatorTest {
+class RMSSDCalculatorTest {
 
 	@Test
-	public void testCalculation() {
+	void testCalculation() {
 		double[] valueData = new double[] { 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0 };
 		RRData data = new RRData(null, TimeUnit.SECOND, valueData, TimeUnit.SECOND);
 		

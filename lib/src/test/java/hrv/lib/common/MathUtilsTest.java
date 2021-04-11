@@ -6,10 +6,10 @@ import java.math.RoundingMode;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MathUtilsTest {
+class MathUtilsTest {
 
 	@Test
-	public void testRound() {
+	void testRound() {
 		double num = 111.1111111111111111;
 		
 		double roundedNum = MathUtils.round(num, 2);		
@@ -20,13 +20,13 @@ public class MathUtilsTest {
 	}
 	
 	@Test
-	public void testAlmostEquals() {
+	void testAlmostEquals() {
 		assertFalse(MathUtils.almostEqual(0.0, 0.1, 0.01));
 		assertTrue(MathUtils.almostEqual(0.0, 0.01, 0.1));
 	}
 	
 	@Test
-	public void testAvgsArray() {
+	void testAveragesArray() {
 		double[] testData = new double[] {1,2,3,4,5,6,7,8,9,10};
 		
 		double[] result = MathUtils.calculateAverageArray(testData, 2);

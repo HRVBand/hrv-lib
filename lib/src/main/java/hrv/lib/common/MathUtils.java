@@ -55,27 +55,27 @@ public class MathUtils {
 	}
 	
 	public static double[] calculateAverageArray(double[] values, int range) {
-		double[] avgs = new double[values.length];
+		double[] averages = new double[values.length];
 		for(int i = 0; i < values.length; i++){
 			
 			int leftStart = i < range ? -i : -range;
 			int count = 0;
 			for(int j = leftStart; j < 0; j++) {
-				avgs[i] += values[i + j];
+				averages[i] += values[i + j];
 				count++;
 			}
 			
-			int rigthEnd = i + (range + 1) > values.length ? (values.length - i) : range + 1;
-			for(int j = 1; j < rigthEnd; j++) {
-				avgs[i] += values[i + j];
+			int rightEnd = i + (range + 1) > values.length ? (values.length - i) : range + 1;
+			for(int j = 1; j < rightEnd; j++) {
+				averages[i] += values[i + j];
 				count++;
 			}
 			
 			if(count != 0) {
-				avgs[i] = avgs[i] / count;
+				averages[i] = averages[i] / count;
 			} 			 
 		}			
 		
-		return avgs;
+		return averages;
 	}
 }

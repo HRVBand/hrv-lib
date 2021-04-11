@@ -11,7 +11,7 @@ import hrv.lib.hrv.RRData;
  */
 public class HRVCutDataManipulator implements HRVDataManipulator {
 
-	private int numToKeep;
+	private final int numToKeep;
 	
 	public HRVCutDataManipulator(int numToKeep) {
 		this.numToKeep = numToKeep;

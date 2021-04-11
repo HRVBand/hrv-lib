@@ -7,7 +7,7 @@ public enum TimeUnit {
 	SECOND("s"),
 	MILLISECOND("ms");
 	
-	String asText;
+	private final String asText;
 	
 	TimeUnit(String asText) {
 		this.asText = asText;

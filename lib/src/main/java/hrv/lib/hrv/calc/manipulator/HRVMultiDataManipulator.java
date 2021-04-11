@@ -7,7 +7,7 @@ import java.util.List;
 
 public class HRVMultiDataManipulator implements HRVDataManipulator {
 
-	List<HRVDataManipulator> manipulators = new ArrayList<>();
+	private final List<HRVDataManipulator> manipulators = new ArrayList<>();
 	
 	@Override
 	public RRData manipulate(RRData data) {

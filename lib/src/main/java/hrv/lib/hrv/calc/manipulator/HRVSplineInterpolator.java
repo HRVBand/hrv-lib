@@ -11,7 +11,7 @@ import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
  */
 public class HRVSplineInterpolator implements HRVDataManipulator {
 
-	private double samplingRate;
+	private final double samplingRate;
 
 	public HRVSplineInterpolator(double samplingRate) {
 		this.samplingRate = samplingRate;

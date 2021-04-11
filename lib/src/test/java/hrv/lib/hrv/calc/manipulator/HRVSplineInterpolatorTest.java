@@ -5,10 +5,10 @@ import hrv.lib.units.TimeUnit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class HRVSplineInterpolatorTest {
+class HRVSplineInterpolatorTest {
 
     @Test
-    public void testTooShortData() {
+    void testTooShortData() {
 
         RRData data = RRData.createFromRRInterval(new double[]{1.0, 0.9}, TimeUnit.SECOND);
 

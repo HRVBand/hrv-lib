@@ -7,15 +7,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HRVCutDataManipulatorTest {
+class HRVCutDataManipulatorTest {
 
 	@Test
-	public void cutTest() {
+	void cutTest() {
 		RRData data = RRData.createFromRRInterval(new double[] { 1.0, 1.1, 1.2, 0.9, 1.0 }, TimeUnit.SECOND);
 		
 		HRVCutDataManipulator cutter = new HRVCutDataManipulator(3);
-		RRData cuttedData = cutter.manipulate(data);
+		RRData cutData = cutter.manipulate(data);
 		
-		assertEquals(3, cuttedData.getTimeAxis().length);
+		assertEquals(3, cutData.getTimeAxis().length);
 	}
 }

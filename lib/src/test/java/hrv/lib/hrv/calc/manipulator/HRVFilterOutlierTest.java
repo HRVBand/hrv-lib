@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class HRVFilterOutlierTest {
+class HRVFilterOutlierTest {
 
 	@Test
-	public void testManipulate() {
+	void testManipulate() {
 		
 		RRData data = RRData.createFromRRInterval(new double[] {1,1,1,1,1,1,1,1,1,1}, TimeUnit.SECOND);
 		

@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PowerSpectrumIntegralCalculatorTest {
+class PowerSpectrumIntegralCalculatorTest {
 
 	@Test
-	public void testOneFunction() {
+	void testOneFunction() {
 		int onesLength = 10;
 		double[] ones = new double[onesLength];
 		double[] onesX = new double[onesLength];

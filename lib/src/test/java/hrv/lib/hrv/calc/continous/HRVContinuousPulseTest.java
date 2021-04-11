@@ -7,24 +7,24 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HRVContinousPulseTest {
+class HRVContinuousPulseTest {
 
 	@Test
-	public void testPulse() {
+	void testPulse() {
 		RRData data = RRData.createFromRRInterval(new double[] { 1.0, 1.0, 1.0, 1.0 }, TimeUnit.SECOND);
 
-		HRVContinousHeartRate pulseCalc = new HRVContinousHeartRate(4);
+		HRVContinuousHeartRate pulseCalc = new HRVContinuousHeartRate(4);
 		assertEquals(60.0, pulseCalc.process(data).getValue(), 0.00001);
 
 		RRData data2 = RRData.createFromRRInterval(new double[] { 2.0, 2.0, 2.0, 2.0, 2.0, 2.0 }, TimeUnit.SECOND);
 
-		HRVContinousHeartRate pulseCalc2 = new HRVContinousHeartRate(6);
+		HRVContinuousHeartRate pulseCalc2 = new HRVContinuousHeartRate(6);
 		assertEquals(30.0, pulseCalc2.process(data2).getValue(), 0.00001);
 	}
 
 	@Test
-	public void testContinuity() {
-		HRVContinousHeartRate pulseCalc = new HRVContinousHeartRate(10);
+	void testContinuity() {
+		HRVContinuousHeartRate pulseCalc = new HRVContinuousHeartRate(10);
 
 		HRVParameterChangedMockListener listener = new HRVParameterChangedMockListener();
 		pulseCalc.addHRVParameterChangedListener(listener);
@@ -42,10 +42,9 @@ public class HRVContinousPulseTest {
 		pulseCalc.newRRInterval(event2);
 		pulseCalc.newRRInterval(event3);
 		pulseCalc.newRRInterval(event4);
-
 	}
 
-	class HRVParameterChangedMockListener implements HRVParameterChangedListener {
+	static class HRVParameterChangedMockListener implements HRVParameterChangedListener {
 
 		@Override
 		public void parameterChanged(HRVParameter param) {
@@ -53,5 +52,4 @@ public class HRVContinousPulseTest {
 			assertEquals(60.0, param.getValue(), 0.0001);			
 		}
 	}
-
 }

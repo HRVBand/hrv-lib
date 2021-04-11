@@ -10,8 +10,8 @@ public class AmplitudeModeCalculator implements HRVDataProcessor {
 		double mode = modeCalc.process(data).getValue();
 		
 		int counter = 0;
-		for (double aRrinterval : data.getValueAxis()) {
-			if (!((aRrinterval > mode * 1.05) || (aRrinterval < mode * 0.95)))
+		for (double aRRInterval : data.getValueAxis()) {
+			if (!((aRRInterval > mode * 1.05) || (aRRInterval < mode * 0.95)))
 				counter++;
 		}
 		return new HRVParameter(HRVParameterEnum.AMPLITUDEMODE, counter / (double) data.getValueAxis().length, "non");

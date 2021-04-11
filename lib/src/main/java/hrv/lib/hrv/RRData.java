@@ -30,7 +30,7 @@ public class RRData {
 	 * 
 	 * @param rrInterval
 	 *            RR-Interval
-	 * @param Unit
+	 * @param unit
 	 *            of the given RR-Data.
 	 * @return new RRData object with given RR-Interval data.
 	 */
@@ -62,9 +62,7 @@ public class RRData {
 	public TimeUnit getValueAxisUnit() {
 		return rrValueAxisUnit;
 	}
-	
-	//@ also
-	//@ ensures \result == rrTimeAxisUnit;
+
 	public TimeUnit getTimeAxisUnit() {
 		return rrTimeAxisUnit;
 	}

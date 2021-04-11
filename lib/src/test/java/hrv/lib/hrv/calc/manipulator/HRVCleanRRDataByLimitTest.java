@@ -12,27 +12,27 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HRVCleanRRDataByLimitTest {
+class HRVCleanRRDataByLimitTest {
 
 	private RRData dataWithDefects;
 	private RRData cleanedData;
 	
 	@BeforeEach
-	public void loadData() throws IOException {
+	void loadData() throws IOException {
 		HRVIBIFileReader reader = new HRVIBIFileReader();
 		
 		Path currentDirectory = Paths.get(System.getProperty("user.dir"));
 		Path sampleDataFolderPath = Paths.get(currentDirectory.toString(), "SampleData");
 		
 		Path dataWithDefectsPath = Paths.get(sampleDataFolderPath.toString(), "RR1_With_Artifacts.ibi");
-		Path cleandDataPath = Paths.get(sampleDataFolderPath.toString(), "RR1_Cleaned.ibi");
+		Path cleanedDataPath = Paths.get(sampleDataFolderPath.toString(), "RR1_Cleaned.ibi");
 		
 		dataWithDefects = reader.readIBIFile(dataWithDefectsPath.toString(), TimeUnit.SECOND);
-		cleanedData = reader.readIBIFile(cleandDataPath.toString(), TimeUnit.SECOND);
+		cleanedData = reader.readIBIFile(cleanedDataPath.toString(), TimeUnit.SECOND);
 	}
 	
 	@Test
-	public void testFunction() {
+	void testFunction() {
 		
 		HRVCleanRRDataByLimits cleaner = new HRVCleanRRDataByLimits();
 		RRData hereCleanedData = cleaner.manipulate(dataWithDefects);

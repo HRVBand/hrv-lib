@@ -19,7 +19,7 @@ import java.util.Set;
  * SD1SD2, SDNN, SDSD. Use {@code setParameters} to change the calculated
  * HRV-Parameters
  * 
- * The method {@code calculatePowerspecturm} calculates the power spectrum of
+ * The method {@code calculatePowerSpecturm} calculates the power spectrum of
  * the given RR-Data. Before that some preprocessing of the data is done.
  * 
  * @author Julian
@@ -27,7 +27,7 @@ import java.util.Set;
  */
 public class HRVLibFacade {
 
-	private EnumSet<HRVParameterEnum> frequencyParams = EnumSet.of(HRVParameterEnum.LFHF, HRVParameterEnum.LF,
+	private final EnumSet<HRVParameterEnum> frequencyParams = EnumSet.of(HRVParameterEnum.LFHF, HRVParameterEnum.LF,
 			HRVParameterEnum.HF, HRVParameterEnum.VLF);
 
 	private Set<HRVParameterEnum> parameters = EnumSet.of(HRVParameterEnum.BAEVSKY, HRVParameterEnum.HF,
@@ -35,16 +35,16 @@ public class HRVLibFacade {
 			HRVParameterEnum.SD1, HRVParameterEnum.SD2, HRVParameterEnum.SD1SD2, HRVParameterEnum.SDNN,
 			HRVParameterEnum.SDSD, HRVParameterEnum.VLF);
 
-	private RRData data;
-	private HRVMultiDataManipulator frequencyDataManipulator = new HRVMultiDataManipulator();
-	private HRVMultiDataManipulator filters = new HRVMultiDataManipulator();
+	private final RRData data;
+	private final HRVMultiDataManipulator frequencyDataManipulator = new HRVMultiDataManipulator();
+	private final HRVMultiDataManipulator filters = new HRVMultiDataManipulator();
 
 	public HRVLibFacade(RRData data) {
 		this.data = data;
 
 		frequencyDataManipulator.addManipulator(new HRVSplineInterpolator(4));
 		frequencyDataManipulator.addManipulator(new HRVCutToPowerTwoDataManipulator());
-		frequencyDataManipulator.addManipulator(new HRVSubstractMeanManipulator());
+		frequencyDataManipulator.addManipulator(new HRVSubtractMeanManipulator());
 	}
 
 	public void setParameters(Set<HRVParameterEnum> parameters) {
@@ -107,7 +107,7 @@ public class HRVLibFacade {
 
 		HRVParameter lf = null;
 		HRVParameter hf = null;
-		HRVParameter vlf = null;
+		HRVParameter vlf;
 		PowerSpectrum ps = getPowerSpectrum(data);
 
 		if (parameters.contains(HRVParameterEnum.LF) || parameters.contains(HRVParameterEnum.LFHF)) {
@@ -160,35 +160,21 @@ public class HRVLibFacade {
 	}
 
 	private HRVDataProcessor getHRVDataProcessor(HRVParameterEnum e) {
-		switch (e) {
-		case AMPLITUDEMODE:
-			return new AmplitudeModeCalculator();
-		case BAEVSKY:
-			return new BaevskyCalculator();
-		case MEAN:
-			return new MeanCaclulator();
-		case MODE:
-			return new ModeCalculator();
-		case MXDMN:
-			return new MxDMnCalculator();
-		case NN50:
-			return new NN50Calculator();
-		case PNN50:
-			return new PNN50Calculator();
-		case RMSSD:
-			return new RMSSDCalculator();
-		case SDNN:
-			return new SDNNCalculator();
-		case SD1:
-			return new SD1Calculator();
-		case SD2:
-			return new SD2Calculator();
-		case SDSD:
-			return new SDSDCalculator();
-		case SD1SD2: 
-			return new SD1SD2Calculator();
-		default:
-			return null;
-		}
+		return switch (e) {
+			case AMPLITUDEMODE -> new AmplitudeModeCalculator();
+			case BAEVSKY -> new BaevskyCalculator();
+			case MEAN -> new MeanCalculator();
+			case MODE -> new ModeCalculator();
+			case MXDMN -> new MxDMnCalculator();
+			case NN50 -> new NN50Calculator();
+			case PNN50 -> new PNN50Calculator();
+			case RMSSD -> new RMSSDCalculator();
+			case SDNN -> new SDNNCalculator();
+			case SD1 -> new SD1Calculator();
+			case SD2 -> new SD2Calculator();
+			case SDSD -> new SDSDCalculator();
+			case SD1SD2 -> new SD1SD2Calculator();
+			default -> null;
+		};
 	}
 }

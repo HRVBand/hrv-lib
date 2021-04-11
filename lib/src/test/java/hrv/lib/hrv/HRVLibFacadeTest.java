@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HRVLibFacadeTest {
+class HRVLibFacadeTest {
 
 	@Test
-	public void testDefaultParamCalculation() {
+	void testDefaultParamCalculation() {
 		RRData data = RRData.createFromRRInterval(new double[] {1,1,1,1,1,1,1,1}, TimeUnit.SECOND);
 		
 		HRVLibFacade facade = new HRVLibFacade(data);
@@ -23,7 +23,7 @@ public class HRVLibFacadeTest {
 	}
 	
 	@Test
-	public void testParamCalculation() {
+	void testParamCalculation() {
 		RRData data = RRData.createFromRRInterval(new double[] {1,1,1,1,1,1,1,1}, TimeUnit.SECOND);
 		
 		HRVLibFacade facade = new HRVLibFacade(data);

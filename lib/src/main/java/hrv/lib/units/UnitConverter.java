@@ -14,7 +14,7 @@ public interface UnitConverter<T extends Enum<T>> {
 
 	/**
 	 * Converts the given {@code values} from the given unit {@code from} to the other give unit {@code to}
-	 * @param value Value to convert
+	 * @param values Values to convert
 	 * @param from Unit to convert from
 	 * @param to Unit to convert to
 	 */

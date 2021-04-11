@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class NN50CalculatorTest {
+class NN50CalculatorTest {
 
 	@Test
-	public void testCalculationSeconds() {
+	void testCalculationSeconds() {
 		double[] valueData = new double[] { 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0 };
 		RRData data = new RRData(null, TimeUnit.SECOND, valueData, TimeUnit.SECOND);
 		
@@ -18,7 +18,7 @@ public class NN50CalculatorTest {
 	}
 	
 	@Test
-	public void testCalculationMilliseconds() {
+	void testCalculationMilliseconds() {
 		double[] valueData = new double[] { 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 70.0 };
 		RRData data = new RRData(null, TimeUnit.MILLISECOND, valueData, TimeUnit.MILLISECOND);
 		

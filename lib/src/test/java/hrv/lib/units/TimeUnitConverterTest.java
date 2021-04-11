@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TimeUnitConverterTest {
+class TimeUnitConverterTest {
 
 	@Test
-	public void testSingelValues() {
+	void testSingleValues() {
 		TimeUnitConverter converter = new TimeUnitConverter();
 		
 		double result1 = converter.convert(12.0, TimeUnit.SECOND, TimeUnit.MILLISECOND);
@@ -24,7 +24,7 @@ public class TimeUnitConverterTest {
 	}
 	
 	@Test
-	public void testArray() {
+	void testArray() {
 		TimeUnitConverter converter = new TimeUnitConverter();
 		
 		double[] data = new double[] {1.0,2.0,3.0};

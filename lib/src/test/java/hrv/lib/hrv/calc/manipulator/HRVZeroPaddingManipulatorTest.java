@@ -5,10 +5,10 @@ import hrv.lib.units.TimeUnit;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HRVZeroPaddingManipulatorTest {
+class HRVZeroPaddingManipulatorTest {
 
 	@Test
-	public void testPadding() {
+	void testPadding() {
 		double[] time2 = new double[] { 0.0, 1.0, 2.0, 3.0, 4.0 };
 		double[] values2 = new double[] { 1.0, 1.1, 1.2, 0.9, 1.0 };
 		RRData data2 = new RRData(time2, TimeUnit.SECOND, values2, TimeUnit.SECOND);
@@ -30,7 +30,7 @@ public class HRVZeroPaddingManipulatorTest {
 	}
 	
 	@Test
-	public void testNoPadding() {
+	void testNoPadding() {
 		double[] time1 = new double[] { 0.0, 1.0, 2.0, 4.0 };
 		double[] values1 = new double[] { 1.0, 1.1, 1.2, 0.9 };
 		RRData data = new RRData(time1, TimeUnit.SECOND, values1, TimeUnit.SECOND);

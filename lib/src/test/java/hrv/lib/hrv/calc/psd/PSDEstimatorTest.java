@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PSDEstimatorTest {
+class PSDEstimatorTest {
 
 	@Test
-	public void testStandardPSD() {
+	void testStandardPSD() {
 		double sinHz = 1; //Frequency of the sin function
 		int sampleFrequency = 8; //Sample Frequency in Hz
 		double xLength = 2; //Length of the data.

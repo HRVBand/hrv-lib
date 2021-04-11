@@ -24,17 +24,16 @@ public class HRVFilterOutlier implements HRVDataManipulator {
 
 		int dataLength = data.getValueAxis().length;
 		double[] values = data.getValueAxis();
-		
-		
+
 		//calculate avg array
-		double[] avgs = MathUtils.calculateAverageArray(values, testRange);
+		double[] averages = MathUtils.calculateAverageArray(values, testRange);
 		
 		//find outlier indices
 		List<Integer> outlierIndices = new ArrayList<>();
 		for(int i = 0; i < dataLength; i++) {
-			double distanceToAvg = Math.abs(values[i] - avgs[i]);
+			double distanceToAvg = Math.abs(values[i] - averages[i]);
 			
-			if(distanceToAvg > avgs[i] * strength) {
+			if(distanceToAvg > averages[i] * strength) {
 				outlierIndices.add(i);
 			}
 		}

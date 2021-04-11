@@ -14,7 +14,7 @@ public class HRVIBIFileReader {
 	 * returns the data in form of a {@code List<Double>}
 	 * @param filePath File to read
 	 * @return Read data.
-	 * @throws IOException
+	 * @throws IOException throws IOException
 	 */
 	public RRData readIBIFile(String filePath, TimeUnit unit) throws IOException {
 		List<Double> rr = new ArrayList<>();

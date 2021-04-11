@@ -4,9 +4,9 @@ import hrv.lib.hrv.RRData;
 import hrv.lib.hrv.calc.parameter.HRVParameter;
 import hrv.lib.hrv.calc.parameter.HRVParameterEnum;
 
-public class HRVContinousHeartRate extends HRVContinousParameterCalculator {
+public class HRVContinuousHeartRate extends HRVContinuousParameterCalculator {
 
-	public HRVContinousHeartRate(int size) {
+	public HRVContinuousHeartRate(int size) {
 		super(size);
 	}
 
@@ -15,8 +15,8 @@ public class HRVContinousHeartRate extends HRVContinousParameterCalculator {
 		
 		double[] values = data.getValueAxis();
 		double sum = 0.0;
-		for(int i = 0; i < values.length; i++) {
-			sum += 1.0 / values[i];
+		for (double value : values) {
+			sum += 1.0 / value;
 		}
 		
 		double beatsPerSecond = sum / values.length;

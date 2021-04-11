@@ -5,15 +5,16 @@ import hrv.lib.hrv.calc.parameter.HRVParameterEnum;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class HRVParameterTest {
+class HRVParameterTest {
 
 	@Test
-	public void creationTests() {
+	void creationTests() {
 		
 		HRVParameter param1 = new HRVParameter();
 		assertEquals(0.0, param1.getValue(), 0.000001);
-		assertEquals(null, param1.getUnit());
+		assertNull(param1.getUnit());
 		
 		param1.setUnit("ms");
 		assertEquals("ms", param1.getUnit());

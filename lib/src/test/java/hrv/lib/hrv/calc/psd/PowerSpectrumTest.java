@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PowerSpectrumTest {
+class PowerSpectrumTest {
 
 	@Test
-	public void testAdd() {
+	void testAdd() {
 		double[] power1 = new double[] { 1.0, 2.0, 3.0 };
 		double[] power2 = new double[] { 3.0, 2.0, 1.0, 1.0 };
 		

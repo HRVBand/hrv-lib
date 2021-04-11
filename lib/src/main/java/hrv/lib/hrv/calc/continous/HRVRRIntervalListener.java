@@ -5,9 +5,6 @@ package hrv.lib.hrv.calc.continous;
  * Copyright (c) 2017
  * @author Julian
  *
- */
-/**
-
  * Created by Julian Martin on 03.01.2016.
  */
 @FunctionalInterface

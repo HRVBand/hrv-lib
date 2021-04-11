@@ -10,12 +10,12 @@ import hrv.lib.units.TimeUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class HRVContinousParameterCalculator implements HRVRRIntervalListener, HRVDataProcessor {
+public abstract class HRVContinuousParameterCalculator implements HRVRRIntervalListener, HRVDataProcessor {
 
-	List<HRVParameterChangedListener> listeners = new ArrayList<>();
-	RotatingMaxSizeList<Double> ibis;
+	protected final List<HRVParameterChangedListener> listeners = new ArrayList<>();
+	protected final RotatingMaxSizeList<Double> ibis;
 	
-	public HRVContinousParameterCalculator(int size) {
+	public HRVContinuousParameterCalculator(int size) {
 		ibis = new RotatingMaxSizeList<>(new Double[size]);
 	}
 	
@@ -24,9 +24,7 @@ public abstract class HRVContinousParameterCalculator implements HRVRRIntervalLi
 	}
 	
 	public void removeHRVParameterChangedListener(HRVParameterChangedListener listener) {
-		if(listeners.contains(listener)) {
-			listeners.remove(listener);	
-		}
+		listeners.remove(listener);
 	}
 
 	/**

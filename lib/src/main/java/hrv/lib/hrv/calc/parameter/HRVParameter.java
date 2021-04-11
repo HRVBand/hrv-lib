@@ -15,7 +15,6 @@ public class HRVParameter {
 
 	/**
 	 * Creates a new HRV-Parameter
-	 * @param name Name of the parameter
 	 * @param value Value of the parameter
 	 * @param unit Unit of the parameter
 	 */

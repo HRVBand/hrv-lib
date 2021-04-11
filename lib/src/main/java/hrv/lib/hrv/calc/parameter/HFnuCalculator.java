@@ -4,7 +4,7 @@ import hrv.lib.hrv.calc.psd.PowerSpectrum;
 import hrv.lib.hrv.calc.psd.PowerSpectrumIntegralCalculator;
 
 /**
- * Calculates the normalized unit of the spectral hf indice. Like defined in
+ * Calculates the normalized unit of the spectral hf indices. Like defined in
  * https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1978375/
  * 
  * @author Julian
@@ -12,10 +12,10 @@ import hrv.lib.hrv.calc.psd.PowerSpectrumIntegralCalculator;
  */
 public class HFnuCalculator implements HRVPowerSpectrumProcessor {
 
-	double lfLowerLimit;
-	double lfUpperLimit;
-	double hfLowerLimit;
-	double hfUpperLimit;
+	private final double lfLowerLimit;
+	private final double lfUpperLimit;
+	private final double hfLowerLimit;
+	private final double hfUpperLimit;
 
 	public HFnuCalculator(double lfLowerLimit, double lfUpperLimit, double hfLowerLimit, double hfUpperLimit) {
 		this.lfLowerLimit = lfLowerLimit;
