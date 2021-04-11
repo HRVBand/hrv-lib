@@ -160,21 +160,35 @@ public class HRVLibFacade {
 	}
 
 	private HRVDataProcessor getHRVDataProcessor(HRVParameterEnum e) {
-		return switch (e) {
-			case AMPLITUDEMODE -> new AmplitudeModeCalculator();
-			case BAEVSKY -> new BaevskyCalculator();
-			case MEAN -> new MeanCalculator();
-			case MODE -> new ModeCalculator();
-			case MXDMN -> new MxDMnCalculator();
-			case NN50 -> new NN50Calculator();
-			case PNN50 -> new PNN50Calculator();
-			case RMSSD -> new RMSSDCalculator();
-			case SDNN -> new SDNNCalculator();
-			case SD1 -> new SD1Calculator();
-			case SD2 -> new SD2Calculator();
-			case SDSD -> new SDSDCalculator();
-			case SD1SD2 -> new SD1SD2Calculator();
-			default -> null;
-		};
+		switch (e) {
+			case AMPLITUDEMODE:
+				return new AmplitudeModeCalculator();
+			case BAEVSKY:
+				return new BaevskyCalculator();
+			case MEAN:
+				return new MeanCalculator();
+			case MODE:
+				return new ModeCalculator();
+			case MXDMN:
+				return new MxDMnCalculator();
+			case NN50:
+				return new NN50Calculator();
+			case PNN50:
+				return new PNN50Calculator();
+			case RMSSD:
+				return new RMSSDCalculator();
+			case SDNN:
+				return new SDNNCalculator();
+			case SD1:
+				return new SD1Calculator();
+			case SD2:
+				return new SD2Calculator();
+			case SDSD:
+				return new SDSDCalculator();
+			case SD1SD2:
+				return new SD1SD2Calculator();
+			default:
+				return null;
+		}
 	}
 }
