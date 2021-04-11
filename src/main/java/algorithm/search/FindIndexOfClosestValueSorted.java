@@ -23,7 +23,7 @@ public class FindIndexOfClosestValueSorted {
 		//Set closest distance to maximum distance
 		double closestDistance = Math.abs(array[array.length - 1] - array[0]);
 		
-		//go through the array 
+		//find index with closest distance
 		for(int i = 0; i < array.length; i++) {
 			double distance = Math.abs(array[i] - value);
 			

@@ -21,7 +21,7 @@ public class HRVLibFacadeTest {
 		HRVLibFacade facade = new HRVLibFacade(data);
 		List<HRVParameter> result = facade.calculateParameters();
 		
-		assertEquals(11, result.size());
+		assertEquals(12, result.size());
 	}
 	
 	@Test
@@ -48,7 +48,7 @@ public class HRVLibFacadeTest {
 
 		facade.setParameters(EnumSet.of(HRVParameterEnum.HF, HRVParameterEnum.LF, HRVParameterEnum.VLF));
 		List<HRVParameter> result4 = facade.calculateParameters();
-		assertEquals(3, result3.size());
+		assertEquals(3, result4.size());
 		assertEquals(HRVParameterEnum.HF, result4.get(0).getType());
 		assertEquals(HRVParameterEnum.LF, result4.get(1).getType());
 		assertEquals(HRVParameterEnum.VLF, result4.get(2).getType());

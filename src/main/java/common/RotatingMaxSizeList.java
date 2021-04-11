@@ -5,7 +5,7 @@ public class RotatingMaxSizeList<T> {
     private final T[] a;
     private int fillRate;
 
-    private int currentlastElementIndex = -1;
+    private int currentLastElementIndex = -1;
     
     public RotatingMaxSizeList(T[] array) {
         this.a = array;
@@ -28,10 +28,10 @@ public class RotatingMaxSizeList<T> {
 	}
 	
 	public boolean add(T first) {		
-		currentlastElementIndex = (currentlastElementIndex + 1) % a.length;
-		a[currentlastElementIndex] = first;
+		currentLastElementIndex = (currentLastElementIndex + 1) % a.length;
+		a[currentLastElementIndex] = first;
 		
-		fillRate = Math.max(fillRate(), currentlastElementIndex + 1);
+		fillRate = Math.max(fillRate(), currentLastElementIndex + 1);
 		
 		return true;
 	}
