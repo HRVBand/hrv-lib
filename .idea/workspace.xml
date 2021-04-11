@@ -49,13 +49,6 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="hrv-lib" type="f1a62948:ProjectNode" />
-                <item name="lib" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="verification" type="c8890929:TasksNode$1" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -67,6 +60,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1r1sdY7dQb7jgFFY4g31uZ9yJqQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -81,17 +75,6 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RunManager" selected="Gradle.hrv-lib:lib [jar]">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="hrv-lib [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
