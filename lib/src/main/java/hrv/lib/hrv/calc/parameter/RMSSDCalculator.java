@@ -9,7 +9,7 @@ public class RMSSDCalculator implements HRVDataProcessor {
 		double[] rr = data.getValueAxis();
 		double sum = 0;
 
-		for (int i = 1; i < rr.length; i++) {
+		for (var i = 1; i < rr.length; i++) {
 			sum += (rr[i - 1] - rr[i]) * (rr[i - 1] - rr[i]);
 		}
 

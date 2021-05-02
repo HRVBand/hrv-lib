@@ -35,8 +35,8 @@ public class RRData {
 	 * @return new RRData object with given RR-Interval data.
 	 */
 	public static RRData createFromRRInterval(double[] rrInterval, TimeUnit unit) {
-		double[] rrTimeAxis = new double[rrInterval.length];
-		for (int i = 1; i < rrInterval.length; i++) {
+		var rrTimeAxis = new double[rrInterval.length];
+		for (var i = 1; i < rrInterval.length; i++) {
 			rrTimeAxis[i] = rrTimeAxis[i - 1] + rrInterval[i - 1];
 		}
 
@@ -68,13 +68,13 @@ public class RRData {
 	}
 	
 	public void changeValuesAxisUnit(TimeUnit newRRValueUnit) {
-		TimeUnitConverter converter = new TimeUnitConverter();
+		var converter = new TimeUnitConverter();
 		converter.convert(this.rrValuesAxis, this.rrValueAxisUnit, newRRValueUnit);
 		this.rrValueAxisUnit = newRRValueUnit;
 	}
 
 	public void changeTimeAxisUnit(TimeUnit newTimeAxisUnit) {
-		TimeUnitConverter converter = new TimeUnitConverter();
+		var converter = new TimeUnitConverter();
 		converter.convert(this.rrTimeAxis, this.rrTimeAxisUnit, newTimeAxisUnit);
 		this.rrTimeAxisUnit = newTimeAxisUnit;
 	}

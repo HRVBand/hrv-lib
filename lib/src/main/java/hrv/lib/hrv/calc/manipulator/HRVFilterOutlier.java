@@ -29,8 +29,8 @@ public class HRVFilterOutlier implements HRVDataManipulator {
 		double[] averages = MathUtils.calculateAverageArray(values, testRange);
 		
 		//find outlier indices
-		List<Integer> outlierIndices = new ArrayList<>();
-		for(int i = 0; i < dataLength; i++) {
+		var outlierIndices = new ArrayList<Integer>();
+		for(var i = 0; i < dataLength; i++) {
 			double distanceToAvg = Math.abs(values[i] - averages[i]);
 			
 			if(distanceToAvg > averages[i] * strength) {
@@ -84,7 +84,7 @@ public class HRVFilterOutlier implements HRVDataManipulator {
 	private double[] removeIndices(double[] data, List<Integer> indicesToRemove) {
 		List<Double> newData = new ArrayList<>();
 
-		for (int i = 0; i < data.length; i++) {
+		for (var i = 0; i < data.length; i++) {
 			if (!indicesToRemove.contains(i)) {
 				newData.add(data[i]);
 			}

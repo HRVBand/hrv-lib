@@ -10,10 +10,10 @@ public class HammingWindow implements HRVDataManipulator {
 		double[] oldRRY = data.getValueAxis();
 		double[] oldRRX = data.getTimeAxis();
 	
-		double[] newRRY = new double[data.getValueAxis().length];
-		double[] newRRX = new double[data.getTimeAxis().length];
+		var newRRY = new double[data.getValueAxis().length];
+		var newRRX = new double[data.getTimeAxis().length];
 		
-		for(int i = 0; i < oldRRY.length; i++) {
+		for(var i = 0; i < oldRRY.length; i++) {
 			newRRY[i] = oldRRY[i] * (0.54 - 0.46 * Math.cos((2 * Math.PI * i) / (oldRRY.length - 1)));
 			newRRX[i] = oldRRX[i];
 		}

@@ -24,7 +24,7 @@ public class FindIndexOfClosestValueSorted {
         double closestDistance = Math.abs(array[array.length - 1] - array[0]);
 
         //find index with closest distance
-        for (int i = 0; i < array.length; i++) {
+        for (var i = 0; i < array.length; i++) {
             double distance = Math.abs(array[i] - value);
 
             if (distance < closestDistance) {

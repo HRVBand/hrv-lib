@@ -25,7 +25,7 @@ public class MathUtils {
 	    if (places < 0) 
 	    	throw new IllegalArgumentException();
 
-	    BigDecimal bd = BigDecimal.valueOf(value);
+	    var bd = BigDecimal.valueOf(value);
 	    bd = bd.setScale(places, RoundingMode.HALF_DOWN);
 	    return bd.doubleValue();
 	}
@@ -34,7 +34,7 @@ public class MathUtils {
 	    if (places < 0) 
 	    { throw new IllegalArgumentException(); }
 
-	    BigDecimal bd = BigDecimal.valueOf(value);
+	    var bd = BigDecimal.valueOf(value);
 	    bd = bd.setScale(places, mode);
 	    return bd.doubleValue();
 	}
@@ -55,18 +55,18 @@ public class MathUtils {
 	}
 	
 	public static double[] calculateAverageArray(double[] values, int range) {
-		double[] averages = new double[values.length];
-		for(int i = 0; i < values.length; i++){
+		var averages = new double[values.length];
+		for(var i = 0; i < values.length; i++){
 			
 			int leftStart = i < range ? -i : -range;
-			int count = 0;
+			var count = 0;
 			for(int j = leftStart; j < 0; j++) {
 				averages[i] += values[i + j];
 				count++;
 			}
 			
 			int rightEnd = i + (range + 1) > values.length ? (values.length - i) : range + 1;
-			for(int j = 1; j < rightEnd; j++) {
+			for(var j = 1; j < rightEnd; j++) {
 				averages[i] += values[i + j];
 				count++;
 			}

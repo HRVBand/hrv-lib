@@ -25,10 +25,10 @@ public class LFnuCalculator implements HRVPowerSpectrumProcessor {
 	}
 	@Override
 	public HRVParameter process(PowerSpectrum ps) {
-		PowerSpectrumIntegralCalculator calcLf = new PowerSpectrumIntegralCalculator(lfLowerLimit, lfUpperLimit);
+		var calcLf = new PowerSpectrumIntegralCalculator(lfLowerLimit, lfUpperLimit);
 		double lf = calcLf.process(ps).getValue();
 		
-		PowerSpectrumIntegralCalculator calcHf = new PowerSpectrumIntegralCalculator(hfLowerLimit, hfUpperLimit);
+		var calcHf = new PowerSpectrumIntegralCalculator(hfLowerLimit, hfUpperLimit);
 		double hf = calcHf.process(ps).getValue();
 		
 		return new HRVParameter(HRVParameterEnum.LFNU, lf / (lf + hf), "");

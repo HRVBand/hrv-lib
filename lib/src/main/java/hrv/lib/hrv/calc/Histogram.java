@@ -28,7 +28,7 @@ public class Histogram {
 	private void searchMin() {
 		min = observations[0];
 		
-		for(int i = 1; i < observations.length; i++) {
+		for(var i = 1; i < observations.length; i++) {
 			if(observations[i] < min)
 				min = observations[i];
 		}
@@ -37,7 +37,7 @@ public class Histogram {
 	private void searchMax() {
 		max = observations[0];
 		
-		for(int i = 1; i < observations.length; i++) {
+		for(var i = 1; i < observations.length; i++) {
 			if(observations[i] > max)
 				max = observations[i];
 		}
@@ -89,9 +89,9 @@ public class Histogram {
 	
 	public double getMode() {
 		int maxBinValue = bins[0];
-		int maxBinIndex = 0;
+		var maxBinIndex = 0;
 		
-		for(int i = 1; i < bins.length; i++) {
+		for(var i = 1; i < bins.length; i++) {
 			if(bins[i] > maxBinValue) {
 				maxBinValue = bins[i];
 				maxBinIndex = i;
@@ -107,9 +107,9 @@ public class Histogram {
 	 * @return Number of the occurrences of the value that occurs most often.
 	 */
 	public int getAmplitudeMode() {
-		int maxBinIndex = 0;
+		var maxBinIndex = 0;
 		
-		for(int i = 1; i < bins.length; i++) {
+		for(var i = 1; i < bins.length; i++) {
 			if(bins[i] > bins[maxBinIndex])
 				maxBinIndex = i;
 		}

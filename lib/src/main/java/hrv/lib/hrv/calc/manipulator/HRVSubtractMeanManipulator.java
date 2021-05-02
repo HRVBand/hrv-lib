@@ -11,8 +11,8 @@ public class HRVSubtractMeanManipulator implements HRVDataManipulator {
 		double[] oldRRY = data.getValueAxis();
 		double[] oldRRX = data.getTimeAxis();
 		
-		double[] newRRY = new double[data.getValueAxis().length];
-		double[] newRRX = new double[data.getTimeAxis().length];
+		var newRRY = new double[data.getValueAxis().length];
+		var newRRX = new double[data.getTimeAxis().length];
 		
 		Mean m = new Mean();
 		double mean = m.evaluate(oldRRY);

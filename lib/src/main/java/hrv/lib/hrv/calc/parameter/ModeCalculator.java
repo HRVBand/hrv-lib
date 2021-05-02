@@ -9,11 +9,11 @@ public class ModeCalculator implements HRVDataProcessor {
 		
 		double[] a = data.getValueAxis();
 		double maxValue = 0;
-		int maxCount = 0;
+		var maxCount = 0;
 
 		// For each element in a calculate the occurrences of that element in a.
 		for (double anA : a) {
-			int count = 0;
+			var count = 0;
 			for (double anA1 : a) {
 
 				// Because the elements are of floating point precision they are

@@ -34,15 +34,15 @@ public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensi
 	
 	private double[] calculatePower(RRData rr) {
 		double[] rrY = rr.getValueAxis();
-		AvgSampleSizeCalculator calc = new AvgSampleSizeCalculator();
+		var calc = new AvgSampleSizeCalculator();
 		double avgSampleSize = calc.process(rr).getValue();
 		
-		final FastFourierTransformer fft = new FastFourierTransformer(DftNormalization.STANDARD);
+		final var fft = new FastFourierTransformer(DftNormalization.STANDARD);
 		final Complex[] fftResult = fft.transform(rrY, TransformType.FORWARD);
 
 		// Calculate the power spectral density of the Fourier Transform
-		double[] betrag = new double[rrY.length];
-		for (int i = 0; i < rrY.length; i++) {
+		var betrag = new double[rrY.length];
+		for (var i = 0; i < rrY.length; i++) {
 			//Calculate power spectral density
 			//Unit: s*s / Hz = s*s*s
 			double abs = fftResult[i].abs();
@@ -53,14 +53,14 @@ public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensi
 	}
 	
 	private double[] calculateFrequencies(RRData rr) {
-		AvgSampleSizeCalculator calc = new AvgSampleSizeCalculator();
+		var calc = new AvgSampleSizeCalculator();
 		double sampleFrequency = 1 / calc.process(rr).getValue();
 		double maxSampleFrequency = 0.5 * sampleFrequency;
 
 		// Calculate Frequencies to corresponding power values
 		// Frequency Steps in Hz
 		double frequencySteps = (2 * maxSampleFrequency) / (rr.getTimeAxis().length);
-		double[] frequencies = new double[rr.getTimeAxis().length];
+		var frequencies = new double[rr.getTimeAxis().length];
 
 		for (int i = 0; i < frequencies.length; i++) {
 			frequencies[i] = (frequencySteps) * i;

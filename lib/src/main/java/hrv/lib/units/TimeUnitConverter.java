@@ -27,7 +27,7 @@ public class TimeUnitConverter implements UnitConverter<TimeUnit> {
 	@Override
 	public void convert(double[] values, TimeUnit from, TimeUnit to) {
 		
-		for(int i = 0; i < values.length; i++) {
+		for(var i = 0; i < values.length; i++) {
 			values[i] = convert(values[i], from, to);
 		}
 	}

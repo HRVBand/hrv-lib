@@ -19,7 +19,7 @@ public class HRVIBIFileReader {
 	public RRData readIBIFile(String filePath, TimeUnit unit) throws IOException {
 		List<Double> rr = new ArrayList<>();
 		
-		try(BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+		try(var reader = new BufferedReader(new FileReader(filePath))) {
 			for(String line; (line = reader.readLine()) != null; ) {
 				rr.add(Double.parseDouble(line));
 			}
@@ -29,8 +29,8 @@ public class HRVIBIFileReader {
 	}
 	
 	private RRData createFromRRInterval(double[] rrInterval, TimeUnit unit) {
-		double[] rrTimeAxis = new double[rrInterval.length];
-		for (int i = 1; i < rrInterval.length; i++) {
+		var rrTimeAxis = new double[rrInterval.length];
+		for (var i = 1; i < rrInterval.length; i++) {
 			rrTimeAxis[i] = rrTimeAxis[i - 1] + rrInterval[i - 1];
 		}
 

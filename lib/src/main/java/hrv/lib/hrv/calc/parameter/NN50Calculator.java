@@ -20,9 +20,9 @@ public class NN50Calculator implements HRVDataProcessor {
 		double[] rr = data.getValueAxis();
 		double threshold = data.getValueAxisUnit() == TimeUnit.SECOND ? 0.05 : 50; //50 ms
 		
-		int nn50 = 0;
+		var nn50 = 0;
 
-		for (int i = 0; i < rr.length - 1; i++) {
+		for (var i = 0; i < rr.length - 1; i++) {
 			if (Math.abs(rr[i] - rr[i + 1]) > threshold) {
 				nn50 += 1;
 			}

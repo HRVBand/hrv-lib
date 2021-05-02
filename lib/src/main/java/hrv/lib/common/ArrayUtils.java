@@ -24,9 +24,9 @@ public class ArrayUtils {
 	 * @return Array filled with the data of the given list.
 	 */
 	public static double[] toPrimitive(final List<Double> list, double defaultValue) {
-		double[] array = new double[list.size()];
+		var array = new double[list.size()];
 
-		for (int i = 0; i < list.size(); i++) {
+		for (var i = 0; i < list.size(); i++) {
 			array[i] = list.get(i) == null ? defaultValue : list.get(i);
 		}
 
@@ -42,9 +42,9 @@ public class ArrayUtils {
 	 * @return primitive double array
 	 */
 	public static double[] toPrimitive(Double[] array, double defaultValue) {
-		double[] newArray = new double[array.length];
+		var newArray = new double[array.length];
 
-		for (int i = 0; i < array.length; i++) {
+		for (var i = 0; i < array.length; i++) {
 			newArray[i] = array[i] == null ? defaultValue : array[i];
 		}
 
@@ -101,7 +101,7 @@ public class ArrayUtils {
 	 */
 	public static double min(double[] array) {
 		double min = array[0];
-		for (int i = 1; i < array.length; i++) {
+		for (var i = 1; i < array.length; i++) {
 			min = Math.min(min, array[i]);
 		}
 		return min;
@@ -116,7 +116,7 @@ public class ArrayUtils {
 	 */
 	public static double max(double[] array) {
 		double max = array[0];
-		for (int i = 1; i < array.length; i++) {
+		for (var i = 1; i < array.length; i++) {
 			max = Math.max(max, array[i]);
 		}
 		return max;
@@ -135,7 +135,7 @@ public class ArrayUtils {
 		if (newZeroes < 0)
 			throw new IllegalArgumentException("Number of new zeroes must be larger than or equal to 0.");
 
-		double[] newData = new double[data.length + newZeroes];
+		var newData = new double[data.length + newZeroes];
 
 		// Transfer existing data
 		System.arraycopy(data, 0, newData, 0, data.length);
@@ -167,7 +167,7 @@ public class ArrayUtils {
 		if (numOfNewIncrements < 0)
 			throw new IllegalArgumentException("Number of new increments must be larger than or equal to 0.");
 
-		double[] newData = new double[data.length + numOfNewIncrements];
+		var newData = new double[data.length + numOfNewIncrements];
 
 		// Transfer existing data
 		System.arraycopy(data, 0, newData, 0, data.length);

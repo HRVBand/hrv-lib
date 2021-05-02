@@ -10,7 +10,7 @@ public class PowerSpectrumUnivariateFunctionAdapter implements UnivariateFunctio
 	
 	public PowerSpectrumUnivariateFunctionAdapter(PowerSpectrum ps) {
 		
-		SplineInterpolator interpolator = new SplineInterpolator();	
+		var interpolator = new SplineInterpolator();
 		interpolFunction = interpolator.interpolate(ps.getFrequency(), ps.getPower());
 	}
 	

@@ -18,8 +18,8 @@ public class HRVCutToPowerTwoDataManipulator implements HRVDataManipulator {
 		double[] oldRRY = data.getValueAxis();
 		double[] oldRRX = data.getTimeAxis();
 		
-		double[] newX = new double[cutAt];
-		double[] newY = new double[cutAt];
+		var newX = new double[cutAt];
+		var newY = new double[cutAt];
 
 		for (int i = data.getTimeAxis().length - cutAt; i < data.getTimeAxis().length; i++) {
 			newX[i - (data.getTimeAxis().length - cutAt)] = oldRRX[i];

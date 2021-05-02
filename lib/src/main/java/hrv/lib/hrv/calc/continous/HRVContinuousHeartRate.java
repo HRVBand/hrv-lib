@@ -14,7 +14,7 @@ public class HRVContinuousHeartRate extends HRVContinuousParameterCalculator {
 	public HRVParameter process(RRData data) {
 		
 		double[] values = data.getValueAxis();
-		double sum = 0.0;
+		var sum = 0.0;
 		for (double value : values) {
 			sum += 1.0 / value;
 		}
