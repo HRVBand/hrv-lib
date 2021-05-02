@@ -25,15 +25,6 @@ public class HRVIBIFileReader {
 			}
 		}
 		
-		return createFromRRInterval(ArrayUtils.toPrimitive(rr, 0.0), unit);
-	}
-	
-	private RRData createFromRRInterval(double[] rrInterval, TimeUnit unit) {
-		var rrTimeAxis = new double[rrInterval.length];
-		for (var i = 1; i < rrInterval.length; i++) {
-			rrTimeAxis[i] = rrTimeAxis[i - 1] + rrInterval[i - 1];
-		}
-
-		return new RRData(rrTimeAxis, unit, rrInterval, unit);
+		return RRData.createFromRRInterval(ArrayUtils.toPrimitive(rr, 0.0), unit);
 	}
 }

@@ -97,7 +97,7 @@ public class HRVLibFacade {
 	 */
 	public PowerSpectrum getPowerSpectrum(RRData data) {
 		RRData manipulatedData = frequencyDataManipulator.manipulate(data);
-		StandardPowerSpectralDensityEstimator estimator = new StandardPowerSpectralDensityEstimator();
+		var estimator = new StandardPowerSpectralDensityEstimator();
 		return estimator.calculateEstimate(manipulatedData);
 	}
 
@@ -108,22 +108,22 @@ public class HRVLibFacade {
 		HRVParameter lf = null;
 		HRVParameter hf = null;
 		HRVParameter vlf;
-		PowerSpectrum ps = getPowerSpectrum(data);
+		var ps = getPowerSpectrum(data);
 
 		if (parameters.contains(HRVParameterEnum.LF) || parameters.contains(HRVParameterEnum.LFHF)) {
-			LFCalculator calcLF = new LFCalculator();
+			var calcLF = new LFCalculator();
 			lf = calcLF.process(ps);
 			allParameters.add(lf);
 		}
 
 		if (parameters.contains(HRVParameterEnum.HF) || parameters.contains(HRVParameterEnum.LFHF)) {
-			HFCalculator calcHF = new HFCalculator();
+			var calcHF = new HFCalculator();
 			hf = calcHF.process(ps);
 			allParameters.add(hf);
 		}
 
 		if (parameters.contains(HRVParameterEnum.VLF)) {
-			VLFCalculator calcVLF = new VLFCalculator();
+			var calcVLF = new VLFCalculator();
 			vlf = calcVLF.process(ps);
 			allParameters.add(vlf);
 		}

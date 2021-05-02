@@ -49,7 +49,7 @@ public class PowerSpectrum {
         //Use the shorter length to avoid array out of bounds.
         int shorterLength = Math.min(ps.getPower().length, this.power.length);
 
-        for (int i = 0; i < shorterLength; i++) {
+        for (var i = 0; i < shorterLength; i++) {
             this.power[i] += ps.getPower()[i];
         }
     }

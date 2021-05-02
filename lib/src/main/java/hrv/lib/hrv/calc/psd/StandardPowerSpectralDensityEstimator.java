@@ -62,7 +62,7 @@ public class StandardPowerSpectralDensityEstimator implements PowerSpectralDensi
 		double frequencySteps = (2 * maxSampleFrequency) / (rr.getTimeAxis().length);
 		var frequencies = new double[rr.getTimeAxis().length];
 
-		for (int i = 0; i < frequencies.length; i++) {
+		for (var i = 0; i < frequencies.length; i++) {
 			frequencies[i] = (frequencySteps) * i;
 		}
 		
