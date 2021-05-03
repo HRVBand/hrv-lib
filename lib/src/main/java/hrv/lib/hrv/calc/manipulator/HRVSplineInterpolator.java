@@ -40,7 +40,7 @@ public class HRVSplineInterpolator implements HRVDataManipulator {
 		// Sampling Step Size in seconds
 		double stepSize = 1 / samplingRate;
 
-		for (int i = 0; i < numInterpolVals; i++) {
+		for (var i = 0; i < numInterpolVals; i++) {
 			xInterpolated[i] = stepSize * i;
 			yInterpolated[i] = interpolFunction.value(xInterpolated[i]);
 		}

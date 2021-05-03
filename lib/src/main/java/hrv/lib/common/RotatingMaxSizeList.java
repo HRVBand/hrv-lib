@@ -2,21 +2,21 @@ package hrv.lib.common;
 
 public class RotatingMaxSizeList<T> {
 
-    private final T[] a;
+    private final T[] elements;
     private int fillRate;
 
     private int currentLastElementIndex = -1;
     
     public RotatingMaxSizeList(T[] array) {
-        this.a = array;
+        this.elements = array;
     }
 
 	public T get(int arg0) {
-		return a[arg0];
+		return elements[arg0];
 	}
 
 	public int size() {
-		return a.length;
+		return elements.length;
 	}
 	
 	/**
@@ -28,8 +28,8 @@ public class RotatingMaxSizeList<T> {
 	}
 	
 	public boolean add(T first) {		
-		currentLastElementIndex = (currentLastElementIndex + 1) % a.length;
-		a[currentLastElementIndex] = first;
+		currentLastElementIndex = (currentLastElementIndex + 1) % elements.length;
+		elements[currentLastElementIndex] = first;
 		
 		fillRate = Math.max(fillRate(), currentLastElementIndex + 1);
 		
@@ -37,6 +37,6 @@ public class RotatingMaxSizeList<T> {
 	}
 	
 	public T[] getArray() {
-		return a;
+		return elements;
 	}
 }
